@@ -38,6 +38,7 @@ async function openFileDialog() {
 
     } else {
         const content = await readBinaryFile(selected);
+        // console.log(content)
         readImgSrc.value = URL.createObjectURL(
             new Blob([content.buffer], { type: 'image/png' })
         );

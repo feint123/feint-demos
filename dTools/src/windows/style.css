@@ -1,0 +1,64 @@
+:root {
+  font-family: var(--el-font-family);
+  color: var(--el-text-color-primary);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+  overflow: hidden;
+  --toolbar-height: 50px;
+  --dt-brightness: brightness(100%);
+  --clip-card-height: 160px;
+  --clip-card-header-padding: 10px;
+  --clip-card-header-height: 24px;
+
+}
+
+:root.dark {
+  color-scheme: dark;
+  --el-bg-color: rgb(39, 44, 45)
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --dt-brightness: brightness(70%)
+  }
+}
+
+body{
+  margin: 0px;
+}
+
+.unselectable{
+  -moz-user-select: none;
+  -o-user-select:none;
+  -khtml-user-select:none;
+  -webkit-user-select:none;
+  -ms-user-select:none;
+  user-select:none;
+  cursor: default;
+}
+
+.el-header {
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-end;
+  border-bottom: 1px solid var(--el-border-color-light);
+}
+  
+
+.el-header .el-icon {
+  padding: 5px;
+  border-radius: 8px;
+  color: var(--el-text-color-regular);
+}
+
+.el-header .el-icon:hover {
+  background-color: var(--el-fill-color-dark);
+  color: var(--el-text-color-primary);
+}
+
+.el-header .el-icon:active {
+  background-color: var(--el-fill-color-darker);
+}

@@ -1,0 +1,106 @@
+{
+  "build": {
+    "beforeDevCommand": "npm run dev",
+    "beforeBuildCommand": "npm run build",
+    "devPath": "http://localhost:1420",
+    "distDir": "../dist",
+    "withGlobalTauri": false
+  },
+  "package": {
+    "productName": "dTools",
+    "version": "0.0.0"
+  },
+  "tauri": {
+    "allowlist": {
+      "all": true,
+      "shell": {
+        "all": false,
+        "open": true
+      },
+      "fs": {
+        "all": true,
+        "scope": ["$APPCACHE/imgs/*"]
+      },
+      "protocol": {
+        "all": false,
+        "asset": true,
+        "assetScope": ["$APPCACHE/imgs/*"]
+      }
+    },
+    "bundle": {
+      "active": true,
+      "category": "DeveloperTool",
+      "copyright": "",
+      "deb": {
+        "depends": []
+      },
+      "externalBin": [],
+      "icon": [
+        "icons/32x32.png",
+        "icons/128x128.png",
+        "icons/128x128@2x.png",
+        "icons/icon.icns",
+        "icons/icon.ico"
+      ],
+      "identifier": "com.feint.dev",
+      "longDescription": "",
+      "macOS": {
+        "entitlements": null,
+        "exceptionDomain": "",
+        "frameworks": [],
+        "providerShortName": null,
+        "signingIdentity": null
+      },
+      "resources": [],
+      "shortDescription": "",
+      "targets": "all",
+      "windows": {
+        "certificateThumbprint": null,
+        "digestAlgorithm": "sha256",
+        "timestampUrl": ""
+      }
+    },
+    "security": {
+      "csp": "asset: https://asset.localhost"
+    },
+    "updater": {
+      "active": false
+    },
+    "windows": [
+      {
+        "fullscreen": false,
+        "height": 600,
+        "resizable": true,
+        "title": "dTools",
+        "width": 800,
+        "titleBarStyle": "Overlay",
+        "hiddenTitle": true,
+        "transparent": true,
+        "minHeight": 600,
+        "minWidth": 800,
+        "label": "main",
+        "acceptFirstMouse": true,
+        "url": "index.html"
+      },
+      {
+        "fullscreen": false,
+        "height": 500,
+        "resizable": false,
+        "title": "dTools",
+        "width": 340,
+        "titleBarStyle": "Overlay",
+        "hiddenTitle": true,
+        "transparent": true,
+        "decorations": false,
+        "label": "qcb",
+        "acceptFirstMouse": true,
+        "url": "qclipboard.html"
+      }
+    ],
+    "systemTray": {
+      "iconPath": "icons/icon.png",
+      "iconAsTemplate": true
+    },
+    "macOSPrivateApi": true
+  }
+}
