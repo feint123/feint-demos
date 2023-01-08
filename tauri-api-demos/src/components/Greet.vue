@@ -19,4 +19,4 @@ async function greet() {
   </div>
 
   <p>{{ greetMsg }}</p>
-</template> 
+</template>
