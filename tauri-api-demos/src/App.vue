@@ -12,48 +12,49 @@ import JsApiNotification from "./components/JsApiNotification.vue";
 import JsApiOs from "./components/JsApiOs.vue";
 import JsApiWindow from "./components/JsApiWindow.vue";
 import JsApiGlobalShortcut from "./components/JsApiGlobalShortcut.vue";
-const activeName = ref('app')
-
-
+const activeName = ref("app");
 </script>
 
 <template>
-  <el-tabs type="border-card" v-model="activeName" class="js-api-tabs">
-    <el-tab-pane label="App" name="app">
-      <JsApiApp />
-    </el-tab-pane>
-    <el-tab-pane label="Clipboard" name="clipboard">
-      <JsApiClipboard />
-    </el-tab-pane>
-    <el-tab-pane label="Dialog" name="dialog">
-      <JsApiDialog />
-    </el-tab-pane>
-    <el-tab-pane label="Path" name="path">
-      <JsApiPath/>
-    </el-tab-pane>
-    <el-tab-pane label="FS" name="fs">
-      <JsApiFs/>
-    </el-tab-pane>
-    <el-tab-pane label="Http" name="http">
-      <JsApiHttp/>
-    </el-tab-pane>
-    <el-tab-pane label="Notification" name="notification">
-      <JsApiNotification/>
-    </el-tab-pane>
-    <el-tab-pane label="GlobalShortcut" name="globalshortcut">
-      <JsApiGlobalShortcut/>
-    </el-tab-pane>
-    <el-tab-pane label="OS" name="os">
-      <JsApiOs />
-    </el-tab-pane>
-    <el-tab-pane label="Window" name="window">
-      <JsApiWindow />
-    </el-tab-pane>
-    
-  </el-tabs>
-
+  <div class="container">
+    <el-tabs type="border-card" v-model="activeName" class="js-api-tabs">
+      <el-tab-pane label="App" name="app">
+        <JsApiApp />
+      </el-tab-pane>
+      <el-tab-pane label="Clipboard" name="clipboard">
+        <JsApiClipboard />
+      </el-tab-pane>
+      <el-tab-pane label="Dialog" name="dialog">
+        <JsApiDialog />
+      </el-tab-pane>
+      <el-tab-pane label="Path" name="path">
+        <JsApiPath />
+      </el-tab-pane>
+      <el-tab-pane label="FS" name="fs">
+        <JsApiFs />
+      </el-tab-pane>
+      <el-tab-pane label="Http" name="http">
+        <JsApiHttp />
+      </el-tab-pane>
+      <el-tab-pane label="Notification" name="notification">
+        <JsApiNotification />
+      </el-tab-pane>
+      <el-tab-pane label="GlobalShortcut" name="globalshortcut">
+        <JsApiGlobalShortcut />
+      </el-tab-pane>
+      <el-tab-pane label="OS" name="os">
+        <JsApiOs />
+      </el-tab-pane>
+      <el-tab-pane label="Window" name="window">
+        <JsApiWindow />
+      </el-tab-pane>
+    </el-tabs>
+  </div>
 </template>
 
 <style scoped>
-
+.container {
+  padding-top: 0;
+  user-select: none;
+}
 </style>

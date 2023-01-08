@@ -2,21 +2,37 @@
   "name": "web-downloader",
   "private": true,
   "version": "0.0.0",
-  "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "tauri": "tauri"
+    "devtools": "vue-devtools",
+    "tauri": "tauri",
+    "tauri:dev": "tauri dev",
+    "tauri:build": "tauri build",
+    "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore",
+    "prettier": "prettier --write  \"src/**/*.{js,ts,json,tsx,css,less,scss,vue,html,md}\"",
+    "develop": "npm-run-all -l -p tauri:dev devtools"
   },
   "dependencies": {
     "@tauri-apps/api": "^1.2.0",
+    "@vueuse/core": "^9.10.0",
     "element-plus": "^2.2.27",
     "vue": "^3.2.45"
   },
   "devDependencies": {
+    "@element-plus/icons-vue": "^2.0.10",
     "@tauri-apps/cli": "^1.2.2",
     "@vitejs/plugin-vue": "^4.0.0",
+    "@vitejs/plugin-vue-jsx": "^3.0.0",
+    "@vue/devtools": "^6.4.5",
+    "eslint": "^8.31.0",
+    "eslint-config-prettier": "^8.6.0",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-security": "^1.5.0",
+    "eslint-plugin-vue": "^9.8.0",
+    "npm-run-all": "^4.1.5",
+    "prettier": "^2.8.2",
     "vite": "^4.0.0"
   }
 }
