@@ -22,10 +22,10 @@ const isResize = ref(true);
 const isDarkTheme = ref(false);
 
 const unListens = reactive({
-  resize: () => { },
-  moved: () => { },
-  scale: () => { },
-  theme: () => { },
+  resize: () => {},
+  moved: () => {},
+  scale: () => {},
+  theme: () => {},
 });
 onMounted(async () => {
   // 设置窗口最小尺寸
@@ -109,7 +109,13 @@ async function updateResize(val) {
 </script>
 
 <template>
-  <el-descriptions title="" direction="horizontal" :column="3" :size="size" border>
+  <el-descriptions
+    title=""
+    direction="horizontal"
+    :column="3"
+    :size="size"
+    border
+  >
     <el-descriptions-item label="窗口缩放">
       {{ windowInfoes.factor }}
     </el-descriptions-item>
@@ -126,30 +132,60 @@ async function updateResize(val) {
       {{ windowInfoes.logicSize.width }}, {{ windowInfoes.logicSize.height }}
     </el-descriptions-item>
     <el-descriptions-item label="窗口操作" :span="3">
-      <el-button type="primary" @click="centerWindow" plain>局中</el-button>
-      <el-button type="danger" @click="closeWindow" plain>关闭</el-button>
-      <el-button type="primary" @click="maximizeWindow" plain>最大化</el-button>
-      <el-button type="primary" @click="minimizeWindow" plain>最小化</el-button>
+      <el-button type="primary" plain @click="centerWindow">局中</el-button>
+      <el-button type="danger" plain @click="closeWindow">关闭</el-button>
+      <el-button type="primary" plain @click="maximizeWindow">最大化</el-button>
+      <el-button type="primary" plain @click="minimizeWindow">最小化</el-button>
     </el-descriptions-item>
     <el-descriptions-item label="窗口置顶">
-      <el-switch v-model="isTop" @change="updateAlwaysOnTop" inline-prompt style="margin-left: 8px" active-text="是"
-        inactive-text="否" />
+      <el-switch
+        v-model="isTop"
+        inline-prompt
+        style="margin-left: 8px"
+        active-text="是"
+        inactive-text="否"
+        @change="updateAlwaysOnTop"
+      />
     </el-descriptions-item>
     <el-descriptions-item label="窗口装饰">
-      <el-switch v-model="isDecor" @change="updateDecorations" inline-prompt style="margin-left: 8px" active-text="是"
-        inactive-text="否" />
+      <el-switch
+        v-model="isDecor"
+        inline-prompt
+        style="margin-left: 8px"
+        active-text="是"
+        inactive-text="否"
+        @change="updateDecorations"
+      />
     </el-descriptions-item>
     <el-descriptions-item label="全屏">
-      <el-switch v-model="isFullscreen" @change="updateFullscreen" inline-prompt style="margin-left: 8px"
-        active-text="是" inactive-text="否" />
+      <el-switch
+        v-model="isFullscreen"
+        inline-prompt
+        style="margin-left: 8px"
+        active-text="是"
+        inactive-text="否"
+        @change="updateFullscreen"
+      />
     </el-descriptions-item>
     <el-descriptions-item label="调整尺寸">
-      <el-switch v-model="isResize" @change="updateResize" inline-prompt style="margin-left: 8px" active-text="是"
-        inactive-text="否" />
+      <el-switch
+        v-model="isResize"
+        inline-prompt
+        style="margin-left: 8px"
+        active-text="是"
+        inactive-text="否"
+        @change="updateResize"
+      />
     </el-descriptions-item>
     <el-descriptions-item label="主题">
-      <el-switch v-model="isDarkTheme" inline-prompt style="margin-left: 8px" active-text="黑暗" inactive-text="明亮"
-        disabled />
+      <el-switch
+        v-model="isDarkTheme"
+        inline-prompt
+        style="margin-left: 8px"
+        active-text="黑暗"
+        inactive-text="明亮"
+        disabled
+      />
     </el-descriptions-item>
   </el-descriptions>
 </template>

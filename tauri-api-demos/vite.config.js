@@ -5,6 +5,7 @@ import ChildProcess from 'child_process';
 import { defineConfig, loadEnv } from 'vite';
 import vue from '@vitejs/plugin-vue';
 import vueJsx from '@vitejs/plugin-vue-jsx';
+import { createHtmlPlugin } from 'vite-plugin-html';
 import pkg from './package.json';
 
 const __APP_INFO__ = {
@@ -16,9 +17,20 @@ const __APP_INFO__ = {
 };
 
 export default defineConfig(({ command, mode, env }) => {
-  const viteEnv = loadEnv(mode, process.cwd(), '');
+  const viteEnv = loadEnv(mode, process.cwd());
+
   return {
-    plugins: [vue(), vueJsx()],
+    plugins: [
+      vue(),
+      vueJsx(),
+      createHtmlPlugin({
+        minify: true,
+        // template: 'public/index.html',
+        inject: {
+          data: viteEnv,
+        },
+      }),
+    ],
 
     clearScreen: false,
     // tauri expects a fixed port, fail if that port is not available

@@ -26,8 +26,8 @@ async function copy() {
       <el-input v-model="form.clipboard" type="textarea" />
     </el-form-item>
     <el-form-item>
-      <el-button @click="copy" plain>复制</el-button>
-      <el-button @click="paste" plain>黏贴</el-button>
+      <el-button plain @click="copy">复制</el-button>
+      <el-button plain @click="paste">黏贴</el-button>
     </el-form-item>
   </el-form>
 </template>

@@ -201,7 +201,7 @@ function handleChange(name) {
 </script>
 
 <template>
-  <el-collapse v-model="activeNames" @change="handleChange" accordion>
+  <el-collapse v-model="activeNames" accordion @change="handleChange">
     <el-collapse-item title="复制文件" name="copyFile">
       <el-form :inline="true" :model="fileCopyForm">
         <el-form-item>
@@ -219,7 +219,7 @@ function handleChange(name) {
           </el-input>
         </el-form-item>
         <el-form-item>
-          <el-button type="primary" @click="copyFileDemo" plain>复制</el-button>
+          <el-button type="primary" plain @click="copyFileDemo">复制</el-button>
         </el-form-item>
       </el-form>
     </el-collapse-item>
@@ -228,10 +228,16 @@ function handleChange(name) {
         <el-card>
           <template #header>
             <div class="card-header">
-              <el-button type="primary" @click="openFileDialog" plain>选择图片</el-button>
+              <el-button type="primary" plain @click="openFileDialog"
+                >选择图片</el-button
+              >
             </div>
           </template>
-          <el-image style="width: 100px; height: 100px" :src="readImgSrc" fit="cover"></el-image>
+          <el-image
+            style="width: 100px; height: 100px"
+            :src="readImgSrc"
+            fit="cover"
+          ></el-image>
         </el-card>
       </el-container>
     </el-collapse-item>
@@ -244,20 +250,29 @@ function handleChange(name) {
           <el-input v-model="writeFileForm.text" type="textarea" />
         </el-form-item>
         <el-form-item>
-          <el-button type="primary" :disabled="writeFileForm.text.trim() == ''" @click="saveFileDialog"
-            plain>保存</el-button>
+          <el-button
+            type="primary"
+            :disabled="writeFileForm.text.trim() == ''"
+            plain
+            @click="saveFileDialog"
+            >保存</el-button
+          >
         </el-form-item>
         <el-form-item>
-          <el-image style="width: 200px; height: 100px" src="https://tauri.app/meta/tauri_logo_light.svg" fit="fill" />
+          <el-image
+            style="width: 200px; height: 100px"
+            src="https://tauri.app/meta/tauri_logo_light.svg"
+            fit="fill"
+          />
         </el-form-item>
         <el-form-item>
-          <el-button type="primary" @click="saveBinaryFile" plain>保存图片</el-button>
+          <el-button type="primary" plain @click="saveBinaryFile"
+            >保存图片</el-button
+          >
         </el-form-item>
       </el-form>
     </el-collapse-item>
   </el-collapse>
 </template>
 
-<style scoped>
-
-</style>
+<style scoped></style>

@@ -44,10 +44,10 @@ function currentChange() {
     <el-table-column prop="title" label="标题" />
   </el-table>
   <el-pagination
+    v-model:current-page="pageInfoes.currentPage"
     background
     layout="prev, pager, next"
     :total="pageInfoes.total"
-    v-model:current-page="pageInfoes.currentPage"
     @current-change="currentChange"
   />
 </template>

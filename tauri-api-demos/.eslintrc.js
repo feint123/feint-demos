@@ -4,6 +4,7 @@ module.exports = {
     node: true,
   },
   extends: ['plugin:vue/vue3-recommended', 'prettier'],
+  // "plugin:import/errors", "plugin:import/warnings", "plugin:prettier/recommended", "prettier"
   parserOptions: {
     ecmaVersion: 2021,
   },
@@ -19,5 +20,5 @@ module.exports = {
     defineExpose: 'readonly',
     withDefaults: 'readonly',
   },
-  ignorePatterns: ['.eslintrc.js', '**/*.js'],
+  ignorePatterns: ['.eslintrc.js'],
 };

@@ -52,15 +52,15 @@ onMounted(async () => {
       <el-button
         :disabled="isNotifPermission"
         type="primary"
-        @click="requestPermissionDemo"
         plain
+        @click="requestPermissionDemo"
         >请求通知权限</el-button
       >
       <el-button
         :disabled="!isNotifPermission"
         type="success"
-        @click="sendNotificationDemo"
         plain
+        @click="sendNotificationDemo"
         >发送通知</el-button
       >
     </el-descriptions-item>

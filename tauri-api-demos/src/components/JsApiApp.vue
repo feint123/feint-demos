@@ -55,12 +55,10 @@ async function showApp() {
       <template #label>
         <div class="cell-item">操作</div>
       </template>
-      <el-button type="primary" @click="hideApp" plain>隐藏</el-button>
-      <el-button type="success" @click="showApp" plain>展示</el-button>
+      <el-button type="primary" plain @click="hideApp">隐藏</el-button>
+      <el-button type="success" plain @click="showApp">展示</el-button>
     </el-descriptions-item>
   </el-descriptions>
 </template>
 
-<style scoped>
-
-</style>
+<style scoped></style>

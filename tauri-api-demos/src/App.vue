@@ -17,7 +17,7 @@ const activeName = ref("app");
 
 <template>
   <div class="container">
-    <el-tabs type="border-card" v-model="activeName" class="js-api-tabs">
+    <el-tabs v-model="activeName" type="border-card" class="js-api-tabs">
       <el-tab-pane label="App" name="app">
         <JsApiApp />
       </el-tab-pane>
