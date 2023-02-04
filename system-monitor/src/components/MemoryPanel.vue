@@ -15,6 +15,10 @@ const memoryChart = ref<EChartsType>();
 
 function updateMemoryUsage(memory: MemoryData) {
     memoryChart.value?.setOption({
+        xAxis: {
+            max: Number.parseInt(totalMemory.value),
+            interval: Math.floor(Number.parseInt(totalMemory.value)/16) * 4,
+        },
         dataset: {
             source: [['memory', (memory.used_memory+memory.used_swap).toFixed(1), memory.total_memory, memory.total_swap]]
         }
@@ -25,7 +29,6 @@ function flushMemoryUsage() {
     invoke<MemoryData>("memory_info", {}).then(memory => {
         console.log(memory)
         totalMemory.value = (memory.total_memory + memory.total_swap).toFixed(0);
-        memoryOption.xAxis.max = Number.parseInt(totalMemory.value);
         updateMemoryUsage(memory);
     });
     return flushMemoryUsage;

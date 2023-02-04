@@ -134,7 +134,7 @@ onMounted(async () => {
                 <template #header>
                     <div class="card-header">
                         <span>Cpu核心负载</span>
-                        <span>{{ cpuBrand }}</span>
+                        <span style="max-width: 200px;" class="multi-text">{{ cpuBrand }}</span>
                         <v-chart style="height: 24px; width: 100px;" ref="cpuTotalChart" :manual-update="true"
                             autoresize />
                     </div>
@@ -168,7 +168,9 @@ onMounted(async () => {
 .el-card {
     --el-card-padding: 8px
 }
-
+.multi-text {
+    -webkit-line-clamp: 1;
+}
 .card-header {
     font-size: smaller;
     /* font-weight: bold; */

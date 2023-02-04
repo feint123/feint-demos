@@ -15,7 +15,8 @@ const socSensorChart = ref<EChartsType>();
 
 function flushSensorData() {
     invoke<SysMonitorData>("system_info", {}).then(sysMonitor => {
-        setSpecialGuage(socSensorChart.value!, '温度', sysMonitor.sensors['SOC MTR Temp Sensor0'].toFixed(2),);
+        const socTemp = sysMonitor.sensors['SOC MTR Temp Sensor0'];
+        setSpecialGuage(socSensorChart.value!, '温度', socTemp==null?0:socTemp.toFixed(2),);
     })
     return flushSensorData;
 }

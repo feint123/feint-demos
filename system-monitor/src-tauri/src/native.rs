@@ -29,26 +29,3 @@ pub fn native_windows(window: &tauri::Window, vibrancy_radius: Option<f64>, need
     set_shadow(window, true).unwrap();
     
 }
-
-#[cfg(target_os = "windows")]
-pub fn create_main_window(app: &AppHandle) -> Window {
-
-    let main_window = tauri::WindowBuilder::new(
-        app,
-        "main", /* the unique window label */
-        tauri::WindowUrl::App("index.html".parse().unwrap()),
-    )
-    .transparent(false)
-    .decorations(false)
-    .resizable(true)
-    .visible(true)
-    .build()
-    .expect("failed to build window");
-    main_window
-        .set_size(LogicalSize::new(800, 600))
-        .expect("failed to set size");
-    main_window.set_min_size(Some(LogicalSize::new(800, 600))).expect("failed to set min size");
-    native_windows(&main_window, None, true);
-    return main_window;
-}
-

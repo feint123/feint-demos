@@ -27,3 +27,13 @@ body {
   user-select:none;
   cursor: default;
 }
+
+.multi-text {
+  display: -webkit-box;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-box-orient: vertical;
+  word-break: break-all;
+  word-wrap: break-word;
+  overflow: hidden;
+}

@@ -1,9 +1,7 @@
-
-
 use std::collections::HashMap;
 
 use battery::{Battery, Manager};
-use sysinfo::{CpuExt, Disk, System, SystemExt, Component, ComponentExt, Process, ProcessExt};
+use sysinfo::{Component, ComponentExt, CpuExt, Disk, Process, ProcessExt, System, SystemExt};
 
 #[derive(serde::Serialize, Default)]
 pub struct SysMonitorData {
@@ -17,16 +15,16 @@ pub struct SysMonitorData {
 pub struct ProcessData {
     name: String,
     memory: f64,
-    pid: String
+    pid: String,
 }
 
 impl ProcessData {
-    pub fn new(process: &Process) -> Self { 
-        Self { 
-            name: process.name().to_string(), 
+    pub fn new(process: &Process) -> Self {
+        Self {
+            name: process.name().to_string(),
             memory: MemoryData::format_memory(process.memory()),
-            pid: process.pid().to_string()
-        } 
+            pid: process.pid().to_string(),
+        }
     }
 }
 
@@ -37,11 +35,11 @@ pub struct SensorData {
 }
 
 impl SensorData {
-    pub fn new(component: &Component) -> Self { 
-        Self { 
+    pub fn new(component: &Component) -> Self {
+        Self {
             label: component.label().to_string(),
             temperature: component.temperature(),
-        } 
+        }
     }
 }
 
@@ -86,7 +84,6 @@ impl CpuCoreData {
 
 #[derive(serde::Serialize, Default)]
 pub struct BatteryData {
-    
     // 电池温度
     temperature: String,
     // 循环周期
@@ -169,7 +166,6 @@ pub fn system_info() -> SysMonitorData {
     let mut sys = System::new_all();
     sys.refresh_components();
 
-
     let mut sensors = HashMap::new();
     for component in sys.components() {
         sensors.insert(component.label().to_string(), component.temperature());
@@ -178,7 +174,7 @@ pub fn system_info() -> SysMonitorData {
         host: HostData::default(),
         disks: vec![],
         sensors,
-        load_avg: sys.load_average().one
+        load_avg: sys.load_average().one,
     };
 }
 
@@ -222,6 +218,9 @@ pub fn battery_info() -> BatteryData {
         batteries.push(BatteryData::new(&battery.unwrap()));
         break;
     }
-    let battery = batteries.pop().unwrap();
-    return battery;
+    if (batteries.len() == 0) {
+        return BatteryData::default();
+    } else {
+        return batteries.pop().unwrap();
+    }
 }
