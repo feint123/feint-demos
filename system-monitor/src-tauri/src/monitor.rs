@@ -227,8 +227,7 @@ pub fn battery_info() -> BatteryData {
 
 #[cfg(target_os = "macos")]
 #[tauri::command]
-pub fn update_tray_title(app: AppHandle) -> bool {
-    use tauri::AppHandle;
+pub fn update_tray_title(app: tauri::AppHandle) -> bool {
 
     let mut sys = System::new_all();
     sys.refresh_cpu();
