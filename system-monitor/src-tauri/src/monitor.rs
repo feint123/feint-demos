@@ -2,7 +2,6 @@ use std::collections::HashMap;
 
 use battery::{Battery, Manager};
 use sysinfo::{Component, ComponentExt, CpuExt, Disk, Process, ProcessExt, System, SystemExt};
-use tauri::AppHandle;
 
 #[derive(serde::Serialize, Default)]
 pub struct SysMonitorData {
@@ -226,8 +225,11 @@ pub fn battery_info() -> BatteryData {
     }
 }
 
+#[cfg(target_os = "macos")]
 #[tauri::command]
 pub fn update_tray_title(app: AppHandle) -> bool {
+    use tauri::AppHandle;
+
     let mut sys = System::new_all();
     sys.refresh_cpu();
     sys.refresh_memory();
@@ -241,5 +243,12 @@ pub fn update_tray_title(app: AppHandle) -> bool {
             .as_str(),
         )
         .unwrap();
+    return true;
+}
+
+#[cfg(target_os = "windows")]
+#[tauri::command]
+pub fn update_tray_title() -> bool {
+    // do nothing
     return true;
 }

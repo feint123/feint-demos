@@ -22,7 +22,7 @@ const unListens = reactive({
 onMounted(async () => {
     unListens.blur = await listen(TauriEvent.WINDOW_BLUR, async (event) => {
         if (event.windowLabel == 'main') {
-            // appWindow.hide();
+            appWindow.hide();
         }
     });
 
