@@ -11,7 +11,7 @@ use tauri::{
     AppHandle, Manager, SystemTrayEvent,
 };
 
-use crate::monitor::{battery_info, cpu_info, memory_info, process_info, system_info};
+use crate::monitor::{battery_info, cpu_info, memory_info, process_info, system_info, update_tray_title};
 
 // Learn more about Tauri commands at https://tauri.app/v1/guides/features/command
 
@@ -32,7 +32,8 @@ fn main() {
             battery_info,
             cpu_info,
             process_info,
-            memory_info
+            memory_info,
+            update_tray_title,
         ])
         .run(tauri::generate_context!())
         .expect("error while running tauri application");

@@ -2,6 +2,7 @@ use std::collections::HashMap;
 
 use battery::{Battery, Manager};
 use sysinfo::{Component, ComponentExt, CpuExt, Disk, Process, ProcessExt, System, SystemExt};
+use tauri::AppHandle;
 
 #[derive(serde::Serialize, Default)]
 pub struct SysMonitorData {
@@ -218,9 +219,27 @@ pub fn battery_info() -> BatteryData {
         batteries.push(BatteryData::new(&battery.unwrap()));
         break;
     }
-    if (batteries.len() == 0) {
+    if batteries.len() == 0 {
         return BatteryData::default();
     } else {
         return batteries.pop().unwrap();
     }
+}
+
+#[tauri::command]
+pub fn update_tray_title(app: AppHandle) -> bool {
+    let mut sys = System::new_all();
+    sys.refresh_cpu();
+    sys.refresh_memory();
+    app.tray_handle()
+        .set_title(
+            format!(
+                "| cpu: {:.0}% | mem: {:.2}GB",
+                sys.global_cpu_info().cpu_usage(),
+                MemoryData::format_memory(sys.used_memory() + sys.used_swap())
+            )
+            .as_str(),
+        )
+        .unwrap();
+    return true;
 }

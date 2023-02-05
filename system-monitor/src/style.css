@@ -12,6 +12,7 @@
   overflow:hidden;
   background-color: var(--el-bg-color);
   border-radius: 10px;
+  border: var(--el-border);
 }
 body {
   padding: 0px;

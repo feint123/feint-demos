@@ -63,7 +63,7 @@
     "windows": [
       {
         "fullscreen": false,
-        "height": 720,
+        "height": 712,
         "resizable": false,
         "title": "system-monitor",
         "width": 450,

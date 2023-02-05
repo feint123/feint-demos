@@ -5,6 +5,14 @@ import Greet from "./components/Greet.vue";
 import { appWindow } from '@tauri-apps/api/window';
 import { listen, TauriEvent } from '@tauri-apps/api/event';
 import { onMounted, onUnmounted, reactive } from "vue";
+import { invoke } from "@tauri-apps/api/tauri";
+
+
+
+function flushTray() {
+    invoke<boolean>("update_tray_title", {})
+    return flushTray;
+}
 
 
 const unListens = reactive({
@@ -14,9 +22,11 @@ const unListens = reactive({
 onMounted(async () => {
     unListens.blur = await listen(TauriEvent.WINDOW_BLUR, async (event) => {
         if (event.windowLabel == 'main') {
-            appWindow.hide();
+            // appWindow.hide();
         }
     });
+
+    setInterval(flushTray(), 5000);
 })
 onUnmounted(() => {
     unListens.blur();
