@@ -1,0 +1,14 @@
+{
+  "pins" : [
+    {
+      "identity" : "compactslider",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/buh/CompactSlider.git",
+      "state" : {
+        "branch" : "main",
+        "revision" : "3cb37fb7385913835b6844c6af2680c64000dcd2"
+      }
+    }
+  ],
+  "version" : 2
+}

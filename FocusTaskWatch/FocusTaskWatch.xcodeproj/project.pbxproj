@@ -1,0 +1,976 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		12D79BC2299D41880080FE8B /* 聚焦任务.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 12D79BC1299D41880080FE8B /* 聚焦任务.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		12D79BC7299D41880080FE8B /* FocusTaskWatchApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12D79BC6299D41880080FE8B /* FocusTaskWatchApp.swift */; };
+		12D79BC9299D41880080FE8B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12D79BC8299D41880080FE8B /* ContentView.swift */; };
+		12D79BCB299D41890080FE8B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 12D79BCA299D41890080FE8B /* Assets.xcassets */; };
+		12D79BCE299D41890080FE8B /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 12D79BCD299D41890080FE8B /* Preview Assets.xcassets */; };
+		12D79BD8299D41890080FE8B /* FocusTaskWatch_Watch_AppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12D79BD7299D41890080FE8B /* FocusTaskWatch_Watch_AppTests.swift */; };
+		12D79BE2299D41890080FE8B /* FocusTaskWatch_Watch_AppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12D79BE1299D41890080FE8B /* FocusTaskWatch_Watch_AppUITests.swift */; };
+		12D79BE4299D41890080FE8B /* FocusTaskWatch_Watch_AppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12D79BE3299D41890080FE8B /* FocusTaskWatch_Watch_AppUITestsLaunchTests.swift */; };
+		12D79C03299D421A0080FE8B /* FocusPagesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12D79BF6299D421A0080FE8B /* FocusPagesView.swift */; };
+		12D79C04299D421A0080FE8B /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12D79BF7299D421A0080FE8B /* MainView.swift */; };
+		12D79C05299D421A0080FE8B /* RuningTaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12D79BF8299D421A0080FE8B /* RuningTaskView.swift */; };
+		12D79C06299D421A0080FE8B /* TaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12D79BF9299D421A0080FE8B /* TaskView.swift */; };
+		12D79C07299D421A0080FE8B /* FocusTimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12D79BFA299D421A0080FE8B /* FocusTimerView.swift */; };
+		12D79C08299D421A0080FE8B /* TaskDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12D79BFB299D421A0080FE8B /* TaskDetailView.swift */; };
+		12D79C09299D421A0080FE8B /* TaskRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12D79BFC299D421A0080FE8B /* TaskRowView.swift */; };
+		12D79C0A299D421A0080FE8B /* MilestoneProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12D79BFD299D421A0080FE8B /* MilestoneProgressView.swift */; };
+		12D79C0B299D421A0080FE8B /* ControlsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12D79BFE299D421A0080FE8B /* ControlsView.swift */; };
+		12D79C0C299D421A0080FE8B /* FocusSuccessView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12D79BFF299D421A0080FE8B /* FocusSuccessView.swift */; };
+		12D79C0D299D421A0080FE8B /* FocusTimelineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12D79C00299D421A0080FE8B /* FocusTimelineView.swift */; };
+		12D79C0E299D421A0080FE8B /* StartPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12D79C01299D421A0080FE8B /* StartPageView.swift */; };
+		12D79C0F299D421A0080FE8B /* FocusGaugeStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12D79C02299D421A0080FE8B /* FocusGaugeStyle.swift */; };
+		12D79C14299D42240080FE8B /* FocusModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12D79C10299D42240080FE8B /* FocusModel.swift */; };
+		12D79C15299D42240080FE8B /* FocusModel+StateMachineExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12D79C11299D42240080FE8B /* FocusModel+StateMachineExtension.swift */; };
+		12D79C16299D42240080FE8B /* TaskItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12D79C12299D42240080FE8B /* TaskItem.swift */; };
+		12D79C17299D42240080FE8B /* FocusModel+RestoreDataExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12D79C13299D42240080FE8B /* FocusModel+RestoreDataExtension.swift */; };
+		12D79C1A299D42810080FE8B /* CompactSlider in Frameworks */ = {isa = PBXBuildFile; productRef = 12D79C19299D42810080FE8B /* CompactSlider */; };
+		12D79C1D299D42D70080FE8B /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 12D79C1F299D42D70080FE8B /* Localizable.strings */; };
+		12D79C28299DA0240080FE8B /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12D79C27299DA0240080FE8B /* NotificationService.swift */; };
+		12D79C2C299DA0240080FE8B /* FocusTaskNotification.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 12D79C25299DA0240080FE8B /* FocusTaskNotification.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		12D79BC3299D41880080FE8B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 12D79BB5299D41880080FE8B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 12D79BC0299D41880080FE8B;
+			remoteInfo = "FocusTaskWatch Watch App";
+		};
+		12D79BD4299D41890080FE8B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 12D79BB5299D41880080FE8B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 12D79BC0299D41880080FE8B;
+			remoteInfo = "FocusTaskWatch Watch App";
+		};
+		12D79BDE299D41890080FE8B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 12D79BB5299D41880080FE8B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 12D79BC0299D41880080FE8B;
+			remoteInfo = "FocusTaskWatch Watch App";
+		};
+		12D79C2A299DA0240080FE8B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 12D79BB5299D41880080FE8B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 12D79C24299DA0240080FE8B;
+			remoteInfo = FocusTaskNotification;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		12D79BEA299D41890080FE8B /* Embed Watch Content */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
+			dstSubfolderSpec = 16;
+			files = (
+				12D79BC2299D41880080FE8B /* 聚焦任务.app in Embed Watch Content */,
+			);
+			name = "Embed Watch Content";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		12D79C30299DA0240080FE8B /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				12D79C2C299DA0240080FE8B /* FocusTaskNotification.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		12D79BBB299D41880080FE8B /* FocusTaskWatch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FocusTaskWatch.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		12D79BC1299D41880080FE8B /* 聚焦任务.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "聚焦任务.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		12D79BC6299D41880080FE8B /* FocusTaskWatchApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FocusTaskWatchApp.swift; sourceTree = "<group>"; };
+		12D79BC8299D41880080FE8B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		12D79BCA299D41890080FE8B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		12D79BCD299D41890080FE8B /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		12D79BD3299D41890080FE8B /* FocusTaskWatch Watch AppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "FocusTaskWatch Watch AppTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		12D79BD7299D41890080FE8B /* FocusTaskWatch_Watch_AppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FocusTaskWatch_Watch_AppTests.swift; sourceTree = "<group>"; };
+		12D79BDD299D41890080FE8B /* FocusTaskWatch Watch AppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "FocusTaskWatch Watch AppUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		12D79BE1299D41890080FE8B /* FocusTaskWatch_Watch_AppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FocusTaskWatch_Watch_AppUITests.swift; sourceTree = "<group>"; };
+		12D79BE3299D41890080FE8B /* FocusTaskWatch_Watch_AppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FocusTaskWatch_Watch_AppUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		12D79BF6299D421A0080FE8B /* FocusPagesView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FocusPagesView.swift; sourceTree = "<group>"; };
+		12D79BF7299D421A0080FE8B /* MainView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		12D79BF8299D421A0080FE8B /* RuningTaskView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RuningTaskView.swift; sourceTree = "<group>"; };
+		12D79BF9299D421A0080FE8B /* TaskView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskView.swift; sourceTree = "<group>"; };
+		12D79BFA299D421A0080FE8B /* FocusTimerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FocusTimerView.swift; sourceTree = "<group>"; };
+		12D79BFB299D421A0080FE8B /* TaskDetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskDetailView.swift; sourceTree = "<group>"; };
+		12D79BFC299D421A0080FE8B /* TaskRowView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskRowView.swift; sourceTree = "<group>"; };
+		12D79BFD299D421A0080FE8B /* MilestoneProgressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MilestoneProgressView.swift; sourceTree = "<group>"; };
+		12D79BFE299D421A0080FE8B /* ControlsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ControlsView.swift; sourceTree = "<group>"; };
+		12D79BFF299D421A0080FE8B /* FocusSuccessView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FocusSuccessView.swift; sourceTree = "<group>"; };
+		12D79C00299D421A0080FE8B /* FocusTimelineView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FocusTimelineView.swift; sourceTree = "<group>"; };
+		12D79C01299D421A0080FE8B /* StartPageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartPageView.swift; sourceTree = "<group>"; };
+		12D79C02299D421A0080FE8B /* FocusGaugeStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FocusGaugeStyle.swift; sourceTree = "<group>"; };
+		12D79C10299D42240080FE8B /* FocusModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FocusModel.swift; sourceTree = "<group>"; };
+		12D79C11299D42240080FE8B /* FocusModel+StateMachineExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "FocusModel+StateMachineExtension.swift"; sourceTree = "<group>"; };
+		12D79C12299D42240080FE8B /* TaskItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskItem.swift; sourceTree = "<group>"; };
+		12D79C13299D42240080FE8B /* FocusModel+RestoreDataExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "FocusModel+RestoreDataExtension.swift"; sourceTree = "<group>"; };
+		12D79C1E299D42D70080FE8B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		12D79C20299D42E50080FE8B /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		12D79C25299DA0240080FE8B /* FocusTaskNotification.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = FocusTaskNotification.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		12D79C27299DA0240080FE8B /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
+		12D79C29299DA0240080FE8B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		12D79C31299DA93B0080FE8B /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		12D79BBE299D41880080FE8B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				12D79C1A299D42810080FE8B /* CompactSlider in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		12D79BD0299D41890080FE8B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		12D79BDA299D41890080FE8B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		12D79C22299DA0240080FE8B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		12D79BB4299D41880080FE8B = {
+			isa = PBXGroup;
+			children = (
+				12D79C31299DA93B0080FE8B /* README.md */,
+				12D79C1F299D42D70080FE8B /* Localizable.strings */,
+				12D79BC5299D41880080FE8B /* FocusTaskWatch Watch App */,
+				12D79BD6299D41890080FE8B /* FocusTaskWatch Watch AppTests */,
+				12D79BE0299D41890080FE8B /* FocusTaskWatch Watch AppUITests */,
+				12D79C26299DA0240080FE8B /* FocusTaskNotification */,
+				12D79BBC299D41880080FE8B /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		12D79BBC299D41880080FE8B /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				12D79BBB299D41880080FE8B /* FocusTaskWatch.app */,
+				12D79BC1299D41880080FE8B /* 聚焦任务.app */,
+				12D79BD3299D41890080FE8B /* FocusTaskWatch Watch AppTests.xctest */,
+				12D79BDD299D41890080FE8B /* FocusTaskWatch Watch AppUITests.xctest */,
+				12D79C25299DA0240080FE8B /* FocusTaskNotification.appex */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		12D79BC5299D41880080FE8B /* FocusTaskWatch Watch App */ = {
+			isa = PBXGroup;
+			children = (
+				12D79BF5299D42000080FE8B /* Models */,
+				12D79BF4299D41F60080FE8B /* Views */,
+				12D79BC6299D41880080FE8B /* FocusTaskWatchApp.swift */,
+				12D79BC8299D41880080FE8B /* ContentView.swift */,
+				12D79BCA299D41890080FE8B /* Assets.xcassets */,
+				12D79BCC299D41890080FE8B /* Preview Content */,
+			);
+			path = "FocusTaskWatch Watch App";
+			sourceTree = "<group>";
+		};
+		12D79BCC299D41890080FE8B /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				12D79BCD299D41890080FE8B /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		12D79BD6299D41890080FE8B /* FocusTaskWatch Watch AppTests */ = {
+			isa = PBXGroup;
+			children = (
+				12D79BD7299D41890080FE8B /* FocusTaskWatch_Watch_AppTests.swift */,
+			);
+			path = "FocusTaskWatch Watch AppTests";
+			sourceTree = "<group>";
+		};
+		12D79BE0299D41890080FE8B /* FocusTaskWatch Watch AppUITests */ = {
+			isa = PBXGroup;
+			children = (
+				12D79BE1299D41890080FE8B /* FocusTaskWatch_Watch_AppUITests.swift */,
+				12D79BE3299D41890080FE8B /* FocusTaskWatch_Watch_AppUITestsLaunchTests.swift */,
+			);
+			path = "FocusTaskWatch Watch AppUITests";
+			sourceTree = "<group>";
+		};
+		12D79BF4299D41F60080FE8B /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				12D79BFE299D421A0080FE8B /* ControlsView.swift */,
+				12D79C02299D421A0080FE8B /* FocusGaugeStyle.swift */,
+				12D79BF6299D421A0080FE8B /* FocusPagesView.swift */,
+				12D79BFF299D421A0080FE8B /* FocusSuccessView.swift */,
+				12D79C00299D421A0080FE8B /* FocusTimelineView.swift */,
+				12D79BFA299D421A0080FE8B /* FocusTimerView.swift */,
+				12D79BF7299D421A0080FE8B /* MainView.swift */,
+				12D79BFD299D421A0080FE8B /* MilestoneProgressView.swift */,
+				12D79BF8299D421A0080FE8B /* RuningTaskView.swift */,
+				12D79C01299D421A0080FE8B /* StartPageView.swift */,
+				12D79BFB299D421A0080FE8B /* TaskDetailView.swift */,
+				12D79BFC299D421A0080FE8B /* TaskRowView.swift */,
+				12D79BF9299D421A0080FE8B /* TaskView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		12D79BF5299D42000080FE8B /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				12D79C10299D42240080FE8B /* FocusModel.swift */,
+				12D79C13299D42240080FE8B /* FocusModel+RestoreDataExtension.swift */,
+				12D79C11299D42240080FE8B /* FocusModel+StateMachineExtension.swift */,
+				12D79C12299D42240080FE8B /* TaskItem.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		12D79C26299DA0240080FE8B /* FocusTaskNotification */ = {
+			isa = PBXGroup;
+			children = (
+				12D79C27299DA0240080FE8B /* NotificationService.swift */,
+				12D79C29299DA0240080FE8B /* Info.plist */,
+			);
+			path = FocusTaskNotification;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		12D79BBA299D41880080FE8B /* FocusTaskWatch */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 12D79BEB299D41890080FE8B /* Build configuration list for PBXNativeTarget "FocusTaskWatch" */;
+			buildPhases = (
+				12D79BB9299D41880080FE8B /* Resources */,
+				12D79BEA299D41890080FE8B /* Embed Watch Content */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				12D79BC4299D41880080FE8B /* PBXTargetDependency */,
+			);
+			name = FocusTaskWatch;
+			productName = FocusTaskWatch;
+			productReference = 12D79BBB299D41880080FE8B /* FocusTaskWatch.app */;
+			productType = "com.apple.product-type.application.watchapp2-container";
+		};
+		12D79BC0299D41880080FE8B /* FocusTaskWatch Watch App */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 12D79BE7299D41890080FE8B /* Build configuration list for PBXNativeTarget "FocusTaskWatch Watch App" */;
+			buildPhases = (
+				12D79BBD299D41880080FE8B /* Sources */,
+				12D79BBE299D41880080FE8B /* Frameworks */,
+				12D79BBF299D41880080FE8B /* Resources */,
+				12D79C30299DA0240080FE8B /* Embed Foundation Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				12D79C2B299DA0240080FE8B /* PBXTargetDependency */,
+			);
+			name = "FocusTaskWatch Watch App";
+			packageProductDependencies = (
+				12D79C19299D42810080FE8B /* CompactSlider */,
+			);
+			productName = "FocusTaskWatch Watch App";
+			productReference = 12D79BC1299D41880080FE8B /* 聚焦任务.app */;
+			productType = "com.apple.product-type.application";
+		};
+		12D79BD2299D41890080FE8B /* FocusTaskWatch Watch AppTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 12D79BEE299D41890080FE8B /* Build configuration list for PBXNativeTarget "FocusTaskWatch Watch AppTests" */;
+			buildPhases = (
+				12D79BCF299D41890080FE8B /* Sources */,
+				12D79BD0299D41890080FE8B /* Frameworks */,
+				12D79BD1299D41890080FE8B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				12D79BD5299D41890080FE8B /* PBXTargetDependency */,
+			);
+			name = "FocusTaskWatch Watch AppTests";
+			productName = "FocusTaskWatch Watch AppTests";
+			productReference = 12D79BD3299D41890080FE8B /* FocusTaskWatch Watch AppTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		12D79BDC299D41890080FE8B /* FocusTaskWatch Watch AppUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 12D79BF1299D41890080FE8B /* Build configuration list for PBXNativeTarget "FocusTaskWatch Watch AppUITests" */;
+			buildPhases = (
+				12D79BD9299D41890080FE8B /* Sources */,
+				12D79BDA299D41890080FE8B /* Frameworks */,
+				12D79BDB299D41890080FE8B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				12D79BDF299D41890080FE8B /* PBXTargetDependency */,
+			);
+			name = "FocusTaskWatch Watch AppUITests";
+			productName = "FocusTaskWatch Watch AppUITests";
+			productReference = 12D79BDD299D41890080FE8B /* FocusTaskWatch Watch AppUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+		12D79C24299DA0240080FE8B /* FocusTaskNotification */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 12D79C2D299DA0240080FE8B /* Build configuration list for PBXNativeTarget "FocusTaskNotification" */;
+			buildPhases = (
+				12D79C21299DA0240080FE8B /* Sources */,
+				12D79C22299DA0240080FE8B /* Frameworks */,
+				12D79C23299DA0240080FE8B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = FocusTaskNotification;
+			productName = FocusTaskNotification;
+			productReference = 12D79C25299DA0240080FE8B /* FocusTaskNotification.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		12D79BB5299D41880080FE8B /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1420;
+				LastUpgradeCheck = 1420;
+				TargetAttributes = {
+					12D79BBA299D41880080FE8B = {
+						CreatedOnToolsVersion = 14.2;
+					};
+					12D79BC0299D41880080FE8B = {
+						CreatedOnToolsVersion = 14.2;
+					};
+					12D79BD2299D41890080FE8B = {
+						CreatedOnToolsVersion = 14.2;
+						TestTargetID = 12D79BC0299D41880080FE8B;
+					};
+					12D79BDC299D41890080FE8B = {
+						CreatedOnToolsVersion = 14.2;
+						TestTargetID = 12D79BC0299D41880080FE8B;
+					};
+					12D79C24299DA0240080FE8B = {
+						CreatedOnToolsVersion = 14.2;
+					};
+				};
+			};
+			buildConfigurationList = 12D79BB8299D41880080FE8B /* Build configuration list for PBXProject "FocusTaskWatch" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+				"zh-Hans",
+			);
+			mainGroup = 12D79BB4299D41880080FE8B;
+			packageReferences = (
+				12D79C18299D42810080FE8B /* XCRemoteSwiftPackageReference "CompactSlider" */,
+			);
+			productRefGroup = 12D79BBC299D41880080FE8B /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				12D79BBA299D41880080FE8B /* FocusTaskWatch */,
+				12D79BC0299D41880080FE8B /* FocusTaskWatch Watch App */,
+				12D79BD2299D41890080FE8B /* FocusTaskWatch Watch AppTests */,
+				12D79BDC299D41890080FE8B /* FocusTaskWatch Watch AppUITests */,
+				12D79C24299DA0240080FE8B /* FocusTaskNotification */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		12D79BB9299D41880080FE8B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		12D79BBF299D41880080FE8B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				12D79BCE299D41890080FE8B /* Preview Assets.xcassets in Resources */,
+				12D79C1D299D42D70080FE8B /* Localizable.strings in Resources */,
+				12D79BCB299D41890080FE8B /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		12D79BD1299D41890080FE8B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		12D79BDB299D41890080FE8B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		12D79C23299DA0240080FE8B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		12D79BBD299D41880080FE8B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				12D79C0D299D421A0080FE8B /* FocusTimelineView.swift in Sources */,
+				12D79C0F299D421A0080FE8B /* FocusGaugeStyle.swift in Sources */,
+				12D79C08299D421A0080FE8B /* TaskDetailView.swift in Sources */,
+				12D79C0C299D421A0080FE8B /* FocusSuccessView.swift in Sources */,
+				12D79C09299D421A0080FE8B /* TaskRowView.swift in Sources */,
+				12D79C17299D42240080FE8B /* FocusModel+RestoreDataExtension.swift in Sources */,
+				12D79C0E299D421A0080FE8B /* StartPageView.swift in Sources */,
+				12D79C0A299D421A0080FE8B /* MilestoneProgressView.swift in Sources */,
+				12D79C03299D421A0080FE8B /* FocusPagesView.swift in Sources */,
+				12D79C05299D421A0080FE8B /* RuningTaskView.swift in Sources */,
+				12D79C07299D421A0080FE8B /* FocusTimerView.swift in Sources */,
+				12D79C04299D421A0080FE8B /* MainView.swift in Sources */,
+				12D79C06299D421A0080FE8B /* TaskView.swift in Sources */,
+				12D79C14299D42240080FE8B /* FocusModel.swift in Sources */,
+				12D79C16299D42240080FE8B /* TaskItem.swift in Sources */,
+				12D79BC9299D41880080FE8B /* ContentView.swift in Sources */,
+				12D79BC7299D41880080FE8B /* FocusTaskWatchApp.swift in Sources */,
+				12D79C0B299D421A0080FE8B /* ControlsView.swift in Sources */,
+				12D79C15299D42240080FE8B /* FocusModel+StateMachineExtension.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		12D79BCF299D41890080FE8B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				12D79BD8299D41890080FE8B /* FocusTaskWatch_Watch_AppTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		12D79BD9299D41890080FE8B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				12D79BE4299D41890080FE8B /* FocusTaskWatch_Watch_AppUITestsLaunchTests.swift in Sources */,
+				12D79BE2299D41890080FE8B /* FocusTaskWatch_Watch_AppUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		12D79C21299DA0240080FE8B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				12D79C28299DA0240080FE8B /* NotificationService.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		12D79BC4299D41880080FE8B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 12D79BC0299D41880080FE8B /* FocusTaskWatch Watch App */;
+			targetProxy = 12D79BC3299D41880080FE8B /* PBXContainerItemProxy */;
+		};
+		12D79BD5299D41890080FE8B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 12D79BC0299D41880080FE8B /* FocusTaskWatch Watch App */;
+			targetProxy = 12D79BD4299D41890080FE8B /* PBXContainerItemProxy */;
+		};
+		12D79BDF299D41890080FE8B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 12D79BC0299D41880080FE8B /* FocusTaskWatch Watch App */;
+			targetProxy = 12D79BDE299D41890080FE8B /* PBXContainerItemProxy */;
+		};
+		12D79C2B299DA0240080FE8B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 12D79C24299DA0240080FE8B /* FocusTaskNotification */;
+			targetProxy = 12D79C2A299DA0240080FE8B /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		12D79C1F299D42D70080FE8B /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				12D79C1E299D42D70080FE8B /* en */,
+				12D79C20299D42E50080FE8B /* zh-Hans */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		12D79BE5299D41890080FE8B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		12D79BE6299D41890080FE8B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+			};
+			name = Release;
+		};
+		12D79BE8299D41890080FE8B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"FocusTaskWatch Watch App/Preview Content\"";
+				DEVELOPMENT_TEAM = CKV6GFY249;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_WKWatchOnly = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.feint.FocusTaskWatch.watchkitapp;
+				PRODUCT_NAME = "聚焦任务";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 9.1;
+			};
+			name = Debug;
+		};
+		12D79BE9299D41890080FE8B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"FocusTaskWatch Watch App/Preview Content\"";
+				DEVELOPMENT_TEAM = CKV6GFY249;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_WKWatchOnly = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.feint.FocusTaskWatch.watchkitapp;
+				PRODUCT_NAME = "聚焦任务";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				VALIDATE_PRODUCT = YES;
+				WATCHOS_DEPLOYMENT_TARGET = 9.1;
+			};
+			name = Release;
+		};
+		12D79BEC299D41890080FE8B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				INFOPLIST_KEY_CFBundleDisplayName = FocusTaskWatch;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.feint.FocusTaskWatch;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		12D79BED299D41890080FE8B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				INFOPLIST_KEY_CFBundleDisplayName = FocusTaskWatch;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.feint.FocusTaskWatch;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 5.0;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		12D79BEF299D41890080FE8B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = CKV6GFY249;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.feint.FocusTaskWatch-Watch-AppTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FocusTaskWatch Watch App.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/FocusTaskWatch Watch App";
+				WATCHOS_DEPLOYMENT_TARGET = 9.1;
+			};
+			name = Debug;
+		};
+		12D79BF0299D41890080FE8B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = CKV6GFY249;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.feint.FocusTaskWatch-Watch-AppTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FocusTaskWatch Watch App.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/FocusTaskWatch Watch App";
+				VALIDATE_PRODUCT = YES;
+				WATCHOS_DEPLOYMENT_TARGET = 9.1;
+			};
+			name = Release;
+		};
+		12D79BF2299D41890080FE8B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = CKV6GFY249;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.feint.FocusTaskWatch-Watch-AppUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				TEST_TARGET_NAME = "FocusTaskWatch Watch App";
+				WATCHOS_DEPLOYMENT_TARGET = 9.1;
+			};
+			name = Debug;
+		};
+		12D79BF3299D41890080FE8B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = CKV6GFY249;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.feint.FocusTaskWatch-Watch-AppUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				TEST_TARGET_NAME = "FocusTaskWatch Watch App";
+				VALIDATE_PRODUCT = YES;
+				WATCHOS_DEPLOYMENT_TARGET = 9.1;
+			};
+			name = Release;
+		};
+		12D79C2E299DA0240080FE8B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = CKV6GFY249;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = FocusTaskNotification/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = FocusTaskNotification;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.feint.FocusTaskWatch.watchkitapp.FocusTaskNotification;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 9.1;
+			};
+			name = Debug;
+		};
+		12D79C2F299DA0240080FE8B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = CKV6GFY249;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = FocusTaskNotification/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = FocusTaskNotification;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.feint.FocusTaskWatch.watchkitapp.FocusTaskNotification;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				VALIDATE_PRODUCT = YES;
+				WATCHOS_DEPLOYMENT_TARGET = 9.1;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		12D79BB8299D41880080FE8B /* Build configuration list for PBXProject "FocusTaskWatch" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				12D79BE5299D41890080FE8B /* Debug */,
+				12D79BE6299D41890080FE8B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		12D79BE7299D41890080FE8B /* Build configuration list for PBXNativeTarget "FocusTaskWatch Watch App" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				12D79BE8299D41890080FE8B /* Debug */,
+				12D79BE9299D41890080FE8B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		12D79BEB299D41890080FE8B /* Build configuration list for PBXNativeTarget "FocusTaskWatch" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				12D79BEC299D41890080FE8B /* Debug */,
+				12D79BED299D41890080FE8B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		12D79BEE299D41890080FE8B /* Build configuration list for PBXNativeTarget "FocusTaskWatch Watch AppTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				12D79BEF299D41890080FE8B /* Debug */,
+				12D79BF0299D41890080FE8B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		12D79BF1299D41890080FE8B /* Build configuration list for PBXNativeTarget "FocusTaskWatch Watch AppUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				12D79BF2299D41890080FE8B /* Debug */,
+				12D79BF3299D41890080FE8B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		12D79C2D299DA0240080FE8B /* Build configuration list for PBXNativeTarget "FocusTaskNotification" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				12D79C2E299DA0240080FE8B /* Debug */,
+				12D79C2F299DA0240080FE8B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		12D79C18299D42810080FE8B /* XCRemoteSwiftPackageReference "CompactSlider" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/buh/CompactSlider.git";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		12D79C19299D42810080FE8B /* CompactSlider */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 12D79C18299D42810080FE8B /* XCRemoteSwiftPackageReference "CompactSlider" */;
+			productName = CompactSlider;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = 12D79BB5299D41880080FE8B /* Project object */;
+}
