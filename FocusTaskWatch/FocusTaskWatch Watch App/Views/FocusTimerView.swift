@@ -15,15 +15,12 @@ struct FocusTimerView: View {
     @Binding var gaugeWidth: Double
     
     @State private var minValue: Double = 0.0
-    @State private var moveText: Bool = false
     
     @EnvironmentObject private var model:FocusModel
     
  
     
     var body: some View {
-    
-            
         VStack {
                 Gauge(value: current, in: minValue...maxValue) {
                     if (showText) {
@@ -32,18 +29,9 @@ struct FocusTimerView: View {
                                 .font(.title)
                                 .bold()
                                 .monospacedDigit()
-                                .offset(x: moveText ? 0: -50, y: moveText ? 0: -50)
                             Text(model.currentTaskLine?.currentNode.taskStage == .rest ? "休息中" : model.getTaskItemById(model.currentTaskId ?? UUID()).description)
                                 .lineLimit(1)
                                 .frame(maxWidth: 60)
-                        }.onAppear {
-                            withAnimation {
-                                moveText = true
-                            }
-                        }.onDisappear() {
-                            withAnimation {
-                                moveText = false
-                            }
                         }
                     }
                 }

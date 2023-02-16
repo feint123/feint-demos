@@ -8,9 +8,11 @@
 import SwiftUI
 import UserNotifications
 
+
 struct ContentView: View {
 
     @EnvironmentObject private var model: FocusModel
+    @Environment(\.scenePhase) private var scenePhase
     
     @State private var showTimeLine = false
     
@@ -21,11 +23,21 @@ struct ContentView: View {
             FocusSuccessView()
         })
         .onAppear {
-            // 请求通知权限
+//             请求通知权限
             let center = UNUserNotificationCenter.current()
             center.requestAuthorization(options: [.alert, .sound, .badge]) { granted, error in
                 if let error = error {
                     print(error)
+                }
+            }
+        }
+        .onChange(of: scenePhase) { newValue in
+            if (newValue == .active) {
+                // 删除alar会话
+                if let session = model.session {
+                    if session.state != .invalid && !model.isStartTask() {
+                        session.invalidate()
+                    }
                 }
             }
         }

@@ -12,9 +12,9 @@ struct TaskItem: Identifiable, Hashable, Codable {
     // 任务描述
     var description: String = ""
     // 专注时长
-    var focusInterval: Double = 25.0
+    var focusInterval: Double = 0.2
     // 休息时长
-    var restInterval: Double = 5.0
+    var restInterval: Double = 0.2
     //  每日目标专注次数
     var daliyFocusTarget: Double = 4.0
     

@@ -6,14 +6,46 @@
 //
 
 import SwiftUI
+import UserNotifications
 
 @main
 struct FocusTaskWatch_Watch_AppApp: App {
     @StateObject var model = FocusModel()
-    
+
     var body: some Scene {
         WindowGroup {
             ContentView().environmentObject(model)
+                .onAppear {
+                    let action = UNNotificationAction(identifier: "continue",
+                                                      title: "Continue",
+                                                      options: [.foreground])
+                    let category = UNNotificationCategory(identifier: "focusCate",
+                                                          actions: [action],
+                                                          intentIdentifiers: [],
+                                                          options: [])
+                    UNUserNotificationCenter.current().setNotificationCategories([category])
+                }
         }
+        
+        WKNotificationScene(controller: NotificationController.self, category: "focusCate")
     }
+}
+
+class NotificationController: WKUserNotificationHostingController<NotificationView> {
+
+    var content:UNNotificationContent!
+    var date:Date!
+
+    override var body: NotificationView {
+        NotificationView(content: .constant(content))
+    }
+
+    override class var isInteractive: Bool { true }
+
+    override func didReceive(_ notification: UNNotification) {
+        content = notification.request.content
+        date = notification.date
+    }
+    
+    
 }

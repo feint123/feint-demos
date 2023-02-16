@@ -29,6 +29,12 @@ extension FocusModel {
         }
         
         showTimeline = true
+        
+        session = WKExtendedRuntimeSession()
+        if let session = session {
+            session.start(at: Date())
+        }
+        
     }
     
     /**
@@ -86,22 +92,41 @@ extension FocusModel {
             showSummary = true
         }
         
-        // 播放通知
-        let device = WKInterfaceDevice.current();
-        device.play(.notification)
         // 发送通知消息
         let center = UNUserNotificationCenter.current()
+       
         center.getNotificationSettings { settings in
-            guard (settings.authorizationStatus == .authorized) ||
-                  (settings.authorizationStatus == .provisional) else { return }
-
+            print(settings.authorizationStatus.rawValue)
+            guard (settings.authorizationStatus == .authorized) else {
+                // 当没有通知权限时使用 alarm session
+                if WKApplication.shared().applicationState == .background {
+                    if let session = self.session {
+                        if session.state == .running {
+                            session.notifyUser(hapticType: .notification)
+                        }
+                    }
+                } else {
+                    if let session = self.session {
+                        session.invalidate()
+                    }
+                    WKInterfaceDevice.current().play(.notification)
+                }
+                return 
+            }
+            
             let content = UNMutableNotificationContent()
             content.body = current.currentNode.taskStage == .rest ? "休息结束！" : "专注结束！"
             content.title = "恭喜你"
             content.sound = UNNotificationSound.default
-            let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 2, repeats: false)
-            center.add(UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger))
+            content.categoryIdentifier = "focusCate"
+            let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 1, repeats: false)
+            let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
+            center.add(request) { error in
+                // donothing
+            }
+            
         }
+        
         // 保存数据
         save()
     }

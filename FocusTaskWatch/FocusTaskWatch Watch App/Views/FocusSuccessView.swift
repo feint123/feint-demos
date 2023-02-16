@@ -29,12 +29,6 @@ struct FocusSuccessView: View {
                 .padding()
             Spacer()
             
-//            Button {
-//
-//            } label: {
-//                Label("继续专注", systemImage: "book")
-//            }.tint(.yellow)
-            
             Button {
                 model.showSummary = false
             } label: {

@@ -41,7 +41,7 @@ struct ControlsView: View {
                 }
                 .disabled(model.isCompletedTodayTarget())
                 
-                Spacer().frame(height: 8)
+                Spacer()
                 
                 GridRow {
                     VStack {

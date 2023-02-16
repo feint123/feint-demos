@@ -21,7 +21,9 @@ class FocusModel: Codable , ObservableObject {
 
     @Published var showSummary = false
     
+    var session: WKExtendedRuntimeSession?
     
+  
     /**
      获取当前的时间线
      */
