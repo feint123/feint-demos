@@ -4,13 +4,15 @@
 
 在这个项目中你可以学习以下几种WatchOS开发知识：
 
-1. 发送通知
-2. haptic提醒
-3. 自定义 Gauge 和 ProgressView
-4. 应用数据持久化
-5. 基本的 watchOS App 布局
-6. TimelineView
-7. 本地化
+	1. 发送通知消息
+	2. haptic提醒
+	3. 应用数据持久化
+	4. WatchKit的基本使用
+	5. 基本的 watchOS App布局
+	6. 自定义 Gauge 和ProgressView
+	7. 使用TimelineView更新视图
+	8. 本地化
+
 
 ### 参考资料
 
@@ -30,6 +32,9 @@
 
 [https://developer.apple.com/documentation/usernotifications](https://developer.apple.com/documentation/usernotifications)
 
+[https://developer.apple.com/documentation/watchkit/using_extended_runtime_sessions](https://developer.apple.com/documentation/watchkit/using_extended_runtime_sessions)
+
+
 数据持久化
 
 [https://developer.apple.com/documentation/swiftui/restoring_your_app_s_state_with_swiftui](https://developer.apple.com/documentation/swiftui/restoring_your_app_s_state_with_swiftui)
@@ -44,4 +49,3 @@ Build a productivity app for Apple Watch
 Build a workout app for Apple Watch
 
 [https://developer.apple.com/videos/play/wwdc2021/10009/](https://developer.apple.com/videos/play/wwdc2021/10009/)
-
