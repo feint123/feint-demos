@@ -1,9 +1,13 @@
 # feint-demos
 一些有趣的小项目
 
+## FocusTask
+代码语言：swift
+> 描述：参考 “Focus” 制作的一个独立的 WatchOS 应用。通过该项目你可以初步掌握 WatchOS App 的开发。
+
 ## system-monitor
 代码语言：Rust、TypeScript
-> 描述：一个基于tauri实现的系统监控工具，用来练习使用echarts和typescript
+> 描述：一个基于tauri实现的系统监控工具，用来练习使用echarts和typescript。
 
 ## dynamic-sort
 代码语言：Rust
@@ -13,13 +17,13 @@
 
 ## SimpleBiLi
 代码语言：swift
-> 描述：一个简单的B站客户端
+> 描述：一个简单的B站客户端。
 
 ## game-of-life
 代码语言：Rust
 
 依赖库：bevy、bevy_egui、rand
-> 描述：rust实现的生命游戏
+> 描述：rust实现的生命游戏。
 ----
 ## dTools
 代码语言：Rust、JavaScript
