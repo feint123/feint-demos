@@ -25,7 +25,7 @@ struct FocusGaugeStyle: GaugeStyle {
                 .trim(from: 0, to: progress)
                 .stroke(style: StrokeStyle(lineWidth: size, lineCap: .round))
                 .foregroundStyle(LinearGradient(colors: [.blue, .cyan], startPoint: .leading, endPoint: .trailing))
-                .shadow(color: .blue.opacity(0.4), radius: 10, x: 0, y: 0)
+//                .shadow(color: .blue.opacity(0.4), radius: 10, x: 0, y: 0)
                 .padding(10)
                 .rotationEffect(.degrees(-90))
         }.onChange(of: configuration.value) { newValue in

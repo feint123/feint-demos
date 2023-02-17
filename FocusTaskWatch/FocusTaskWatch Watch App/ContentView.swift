@@ -32,14 +32,7 @@ struct ContentView: View {
             }
         }
         .onChange(of: scenePhase) { newValue in
-            if (newValue == .active) {
-                // 删除alar会话
-                if let session = model.session {
-                    if session.state != .invalid && !model.isStartTask() {
-                        session.invalidate()
-                    }
-                }
-            }
+            // dosomething
         }
     }
 }

@@ -12,7 +12,6 @@ struct ControlsView: View {
     @EnvironmentObject private var model:FocusModel
     
     var body: some View {
-        NavigationStack {
             Grid {
                 GridRow {
                     VStack {
@@ -72,7 +71,6 @@ struct ControlsView: View {
             .navigationBarTitleDisplayMode(.inline)
             .navigationTitle("操作")
         }
-    }
 }
 
 struct ControlsView_Previews: PreviewProvider {

@@ -12,7 +12,7 @@ struct TaskView: View {
     @EnvironmentObject private var model: FocusModel
     
     var body: some View {
-        NavigationStack {
+
             List {
                 ForEach($model.items) { $item in
                     TaskRowView(item: $item)
@@ -45,7 +45,6 @@ struct TaskView: View {
                 model.save()
             }
         }
-    }
 }
 
 struct TaskView_Previews: PreviewProvider {

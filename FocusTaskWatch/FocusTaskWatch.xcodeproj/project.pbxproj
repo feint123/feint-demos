@@ -35,6 +35,8 @@
 		12D79C1A299D42810080FE8B /* CompactSlider in Frameworks */ = {isa = PBXBuildFile; productRef = 12D79C19299D42810080FE8B /* CompactSlider */; };
 		12D79C1D299D42D70080FE8B /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 12D79C1F299D42D70080FE8B /* Localizable.strings */; };
 		12D79C34299E584D0080FE8B /* NotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12D79C33299E584D0080FE8B /* NotificationView.swift */; };
+		12DFC146299F974C009FB667 /* FocusNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12DFC145299F974C009FB667 /* FocusNotifications.swift */; };
+		12DFC148299F9FD6009FB667 /* FocusModel+NotificationExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12DFC147299F9FD6009FB667 /* FocusModel+NotificationExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -119,6 +121,8 @@
 		12D79C31299DA93B0080FE8B /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		12D79C32299E4BB20080FE8B /* FocusTaskWatch-Watch-App-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "FocusTaskWatch-Watch-App-Info.plist"; sourceTree = SOURCE_ROOT; };
 		12D79C33299E584D0080FE8B /* NotificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationView.swift; sourceTree = "<group>"; };
+		12DFC145299F974C009FB667 /* FocusNotifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FocusNotifications.swift; sourceTree = "<group>"; };
+		12DFC147299F9FD6009FB667 /* FocusModel+NotificationExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FocusModel+NotificationExtension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -173,6 +177,7 @@
 		12D79BC5299D41880080FE8B /* FocusTaskWatch Watch App */ = {
 			isa = PBXGroup;
 			children = (
+				12DFC144299F95D8009FB667 /* Notifications */,
 				12D79C32299E4BB20080FE8B /* FocusTaskWatch-Watch-App-Info.plist */,
 				12D79BF5299D42000080FE8B /* Models */,
 				12D79BF4299D41F60080FE8B /* Views */,
@@ -237,8 +242,17 @@
 				12D79C13299D42240080FE8B /* FocusModel+RestoreDataExtension.swift */,
 				12D79C11299D42240080FE8B /* FocusModel+StateMachineExtension.swift */,
 				12D79C12299D42240080FE8B /* TaskItem.swift */,
+				12DFC147299F9FD6009FB667 /* FocusModel+NotificationExtension.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		12DFC144299F95D8009FB667 /* Notifications */ = {
+			isa = PBXGroup;
+			children = (
+				12DFC145299F974C009FB667 /* FocusNotifications.swift */,
+			);
+			path = Notifications;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -419,6 +433,7 @@
 				12D79C03299D421A0080FE8B /* FocusPagesView.swift in Sources */,
 				12D79C05299D421A0080FE8B /* RuningTaskView.swift in Sources */,
 				12D79C07299D421A0080FE8B /* FocusTimerView.swift in Sources */,
+				12DFC146299F974C009FB667 /* FocusNotifications.swift in Sources */,
 				12D79C04299D421A0080FE8B /* MainView.swift in Sources */,
 				12D79C06299D421A0080FE8B /* TaskView.swift in Sources */,
 				12D79C14299D42240080FE8B /* FocusModel.swift in Sources */,
@@ -428,6 +443,7 @@
 				12D79C0B299D421A0080FE8B /* ControlsView.swift in Sources */,
 				12D79C15299D42240080FE8B /* FocusModel+StateMachineExtension.swift in Sources */,
 				12D79C34299E584D0080FE8B /* NotificationView.swift in Sources */,
+				12DFC148299F9FD6009FB667 /* FocusModel+NotificationExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -661,7 +677,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = CKV6GFY249;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_KEY_CFBundleDisplayName = FocusTaskWatch;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.feint.FocusTaskWatch;
@@ -677,7 +693,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = CKV6GFY249;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_KEY_CFBundleDisplayName = FocusTaskWatch;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.feint.FocusTaskWatch;

@@ -17,9 +17,9 @@ struct FocusTaskWatch_Watch_AppApp: App {
             ContentView().environmentObject(model)
                 .onAppear {
                     let action = UNNotificationAction(identifier: "continue",
-                                                      title: "Continue",
+                                                      title: NSLocalizedString("Continue", comment: "continue"),
                                                       options: [.foreground])
-                    let category = UNNotificationCategory(identifier: "focusCate",
+                    let category = UNNotificationCategory(identifier: FocusNotification.FOCUS_CATE_TASK_SUCCESS,
                                                           actions: [action],
                                                           intentIdentifiers: [],
                                                           options: [])
@@ -27,7 +27,7 @@ struct FocusTaskWatch_Watch_AppApp: App {
                 }
         }
         
-        WKNotificationScene(controller: NotificationController.self, category: "focusCate")
+        WKNotificationScene(controller: NotificationController.self, category: FocusNotification.FOCUS_CATE_TASK_SUCCESS)
     }
 }
 

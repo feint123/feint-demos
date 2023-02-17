@@ -15,10 +15,18 @@ struct StartPageView: View {
     
     var body: some View {
         TabView(selection: $selection) {
-            ControlsView().tag(FocusTab.controls)
+            // 控制面板
+            NavigationStack {
+                ControlsView()
+            }.tag(FocusTab.controls)
             // 主视图
-            MainView().tag(FocusTab.main)
-            TaskView().tag(FocusTab.tasklist)
+            NavigationStack {
+                MainView()
+            }.tag(FocusTab.main)
+            // 任务列表
+            NavigationStack {
+                TaskView()
+            }.tag(FocusTab.tasklist)
         }
         .onChange(of: model.currentTaskLine?.currentNode.state, perform: { _ in
             withAnimation {

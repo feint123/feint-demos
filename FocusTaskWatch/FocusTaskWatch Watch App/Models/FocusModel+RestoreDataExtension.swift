@@ -22,7 +22,6 @@ extension FocusModel {
         try container.encode(currentTaskId, forKey: .currentTaskId)
         try container.encode(taskLinesMap, forKey: .taskLinesMap)
         try container.encode(showTimeline, forKey: .showTimeline)
-        try container.encode(showSummary, forKey: .showSummary)
     }
 
     private func documentsDirectory() -> URL {

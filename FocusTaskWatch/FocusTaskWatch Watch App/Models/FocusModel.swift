@@ -21,7 +21,7 @@ class FocusModel: Codable , ObservableObject {
 
     @Published var showSummary = false
     
-    var session: WKExtendedRuntimeSession?
+//    var session: WKExtendedRuntimeSession?
     
   
     /**
@@ -38,6 +38,12 @@ class FocusModel: Codable , ObservableObject {
             }
             
             return lineMap[currentTaskId]
+        }
+    }
+    
+    var currentItem: TaskItem {
+        get {
+            getTaskItemById(currentTaskId ?? UUID())
         }
     }
     
@@ -60,7 +66,6 @@ class FocusModel: Codable , ObservableObject {
                 currentTaskId = decoded.currentTaskId
                 taskLinesMap = decoded.taskLinesMap
                 showTimeline = decoded.showTimeline
-                showSummary = decoded.showSummary
             }
         }
     }
@@ -72,7 +77,6 @@ class FocusModel: Codable , ObservableObject {
         currentTaskId = try values.decode(Optional.self, forKey: .currentTaskId)
         taskLinesMap = try values.decode(Dictionary.self, forKey: .taskLinesMap)
         showTimeline = try values.decode(Bool.self, forKey: .showTimeline)
-        showSummary = try values.decode(Bool.self, forKey: .showSummary)
     }
     
 }
