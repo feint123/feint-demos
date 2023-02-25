@@ -1,0 +1,20 @@
+/* 
+  Localizable.strings
+  QRCodeGenerator
+
+  Created by feint on 2023/2/25.
+  
+*/
+/**
+  二维码
+  */
+"QR Code"="二维码";
+"Width"="宽度";
+"Please input QR Code message"="请输入二维码内容";
+"Create QR Code"="创建二维码";
+"Copied To Clipboard"="已复制到剪切板";
+"Rectangle"="矩形";
+"RoundedRectangle"="圆角矩形";
+"Circle"="圆形";
+"Share QR Code"="分享二维码";
+
