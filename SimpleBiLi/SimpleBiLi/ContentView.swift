@@ -10,7 +10,7 @@ import AVKit
 struct ContentView: View {
     @EnvironmentObject var fetcher: BiliFetcher
     @State var searchVal:String = ""
-    @State private var id: Int = 0
+    @State private var id: Int? = 0
     @State private var avid:Int?
     @State var cvisibility = NavigationSplitViewVisibility.all
     var body: some View {

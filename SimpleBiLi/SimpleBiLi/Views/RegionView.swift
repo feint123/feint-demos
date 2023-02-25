@@ -10,7 +10,7 @@ import SwiftUI
 
 struct RegionView: View {
     @EnvironmentObject var fetcher: BiliFetcher
-    @Binding var id:Int
+    @Binding var id:Int?
     @Binding var avid:Int?
     
     var body: some View {

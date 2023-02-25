@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct SidebarView: View {
-    @Binding var id: Int
+    @Binding var id: Int?
     @EnvironmentObject var fetcher:BiliFetcher
     
     var body: some View {
