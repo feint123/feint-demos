@@ -108,7 +108,7 @@ impl BatteryData {
     pub fn new(battery: &Battery) -> Self {
         Self {
             temperature: format!("{:.2}℃", battery.temperature().unwrap().value - 273.15),
-            cycle_count: battery.cycle_count().unwrap(),
+            cycle_count: battery.cycle_count().unwrap_or(0),
             state: match battery.state() {
                 battery::State::Full => 1,
                 battery::State::Charging => 2,
