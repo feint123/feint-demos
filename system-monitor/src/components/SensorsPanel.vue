@@ -8,7 +8,6 @@ import { SysMonitorData, CpuCoreData, MemoryData } from "../assets/ts/monitor";
 import { gaugeOption } from "../assets/ts/options/options";
 import { setSpecialGuage } from "../assets/ts/options/gaugeOption";
 import { EChartsType } from "echarts/core";
-import { useDark } from "@vueuse/core";
 provide(THEME_KEY, 'blue')
 
 const socSensorChart = ref<EChartsType>();
