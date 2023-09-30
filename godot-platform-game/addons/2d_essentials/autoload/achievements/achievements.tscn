@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://xn6hart5rpre"]
+
+[ext_resource type="Script" path="res://addons/2d_essentials/autoload/achievements/achievements.gd" id="1_2mdfu"]
+
+[node name="GodotEssentialsAchievement" type="Node"]
+script = ExtResource("1_2mdfu")
+
+[node name="HTTPRequest" type="HTTPRequest" parent="."]

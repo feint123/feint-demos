@@ -1,0 +1,207 @@
+[gd_scene load_steps=18 format=3 uid="uid://wptbo64vd4hk"]
+
+[ext_resource type="Theme" uid="uid://dga04c501s0oa" path="res://assets/theme.tres" id="1_lr0un"]
+[ext_resource type="PackedScene" uid="uid://ds06mwhee8ygm" path="res://game_settings/components/slider/slider.tscn" id="1_xol1c"]
+[ext_resource type="Script" path="res://scripts/Settings.gd" id="2_cu0da"]
+[ext_resource type="Texture2D" uid="uid://buotak2dk5n0x" path="res://addons/ggs/assets/game_settings/audio_volume.svg" id="3_6afvw"]
+[ext_resource type="Script" path="res://game_settings/settings/audio_volume.gd" id="4_7mhtt"]
+[ext_resource type="Texture2D" uid="uid://58hsy4h88pjs" path="res://assets/tileSets/cat_tile.png" id="7_hjahf"]
+
+[sub_resource type="Resource" id="Resource_tj6w2"]
+resource_name = "Music"
+script = ExtResource("4_7mhtt")
+bus_name = "Music"
+current = 73.0
+default = 80.0
+name = "Music"
+category = "Audio"
+icon = ExtResource("3_6afvw")
+desc = "Change volume of a specific audio bus."
+value_type = 3
+value_hint = 1
+value_hint_string = "0,100"
+
+[sub_resource type="Resource" id="Resource_i8vsg"]
+resource_name = "Effect"
+script = ExtResource("4_7mhtt")
+bus_name = "Effect"
+current = 52.0
+default = 80.0
+name = "Effect"
+category = "Audio"
+icon = ExtResource("3_6afvw")
+desc = "Change volume of a specific audio bus."
+value_type = 3
+value_hint = 1
+value_hint_string = "0,100"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fjt8y"]
+atlas = ExtResource("7_hjahf")
+region = Rect2(0, 416, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1i833"]
+atlas = ExtResource("7_hjahf")
+region = Rect2(32, 416, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jh1h3"]
+atlas = ExtResource("7_hjahf")
+region = Rect2(64, 416, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6kqk7"]
+atlas = ExtResource("7_hjahf")
+region = Rect2(96, 416, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sysnx"]
+atlas = ExtResource("7_hjahf")
+region = Rect2(128, 416, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y45x3"]
+atlas = ExtResource("7_hjahf")
+region = Rect2(160, 416, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q8w5m"]
+atlas = ExtResource("7_hjahf")
+region = Rect2(192, 416, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0v1tr"]
+atlas = ExtResource("7_hjahf")
+region = Rect2(224, 416, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_cct57"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fjt8y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1i833")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jh1h3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6kqk7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sysnx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y45x3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q8w5m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0v1tr")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}]
+
+[node name="Settings" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_lr0un")
+script = ExtResource("2_cu0da")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 640.0
+offset_bottom = 360.0
+color = Color(1, 0.662745, 0.384314, 0.168627)
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+
+[node name="Label" type="Label" parent="MarginContainer"]
+layout_mode = 2
+theme_type_variation = &"HeaderLarge"
+text = "设置"
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -28.0
+offset_bottom = 28.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_lr0un")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+custom_minimum_size = Vector2(300, 2.08165e-12)
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CenterContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "背景音乐"
+
+[node name="Slider" parent="CenterContainer/VBoxContainer/HBoxContainer" instance=ExtResource("1_xol1c")]
+layout_mode = 2
+setting = SubResource("Resource_tj6w2")
+apply_on_change = true
+
+[node name="Slider" parent="CenterContainer/VBoxContainer/HBoxContainer/Slider" index="0"]
+custom_minimum_size = Vector2(200, 2.08165e-12)
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CenterContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "音效"
+
+[node name="Slider" parent="CenterContainer/VBoxContainer/HBoxContainer2" instance=ExtResource("1_xol1c")]
+layout_mode = 2
+setting = SubResource("Resource_i8vsg")
+apply_on_change = true
+
+[node name="Slider" parent="CenterContainer/VBoxContainer/HBoxContainer2/Slider" index="0"]
+custom_minimum_size = Vector2(200, 2.08165e-12)
+
+[node name="MarginContainer2" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -33.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 16
+
+[node name="ReturnButton" type="Button" parent="MarginContainer2"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 2.08165e-12)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "返回主菜单"
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(253, 294)
+sprite_frames = SubResource("SpriteFrames_cct57")
+autoplay = "default"
+
+[connection signal="pressed" from="MarginContainer2/ReturnButton" to="." method="_on_return_button_pressed"]
+
+[editable path="CenterContainer/VBoxContainer/HBoxContainer/Slider"]
+[editable path="CenterContainer/VBoxContainer/HBoxContainer2/Slider"]

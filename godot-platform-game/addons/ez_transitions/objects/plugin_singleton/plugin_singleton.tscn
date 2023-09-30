@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://g0r0vrmlkjgu"]
+
+[ext_resource type="Script" path="res://addons/ez_transitions/objects/plugin_singleton/plugin_singleton_script.gd" id="1_e8frc"]
+
+[node name="Transition" type="CanvasLayer"]
+layer = 2
+script = ExtResource("1_e8frc")

@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=3 uid="uid://cosnrh544v3l6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nhd7e"]
+size = Vector2(71, 10)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h4ksv"]
+size = Vector2(69, 6)
+
+[node name="RigidBody2D" type="RigidBody2D"]
+position = Vector2(571, 0)
+collision_mask = 2
+gravity_scale = 2.66454e-15
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(5, -13)
+shape = SubResource("RectangleShape2D_nhd7e")
+one_way_collision = true
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(5.5, -7)
+shape = SubResource("RectangleShape2D_h4ksv")
+debug_color = Color(0.85098, 0.364706, 0.223529, 0.419608)

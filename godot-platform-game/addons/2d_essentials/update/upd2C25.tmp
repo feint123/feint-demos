@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://b08kmaj6yrh7l"]
+
+[ext_resource type="Script" path="res://addons/2d_essentials/update/update_plugin_button.gd" id="1_jorwk"]
+
+[node name="UpdatePluginButton" type="Button"]
+text = "update"
+script = ExtResource("1_jorwk")
+
+[node name="HTTPRequest" type="HTTPRequest" parent="."]
+
+[node name="DownloadDialog" type="AcceptDialog" parent="."]
+visible = true
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]
+[connection signal="request_completed" from="HTTPRequest" to="." method="_on_http_request_request_completed"]

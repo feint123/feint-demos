@@ -1,0 +1,1263 @@
+[gd_scene load_steps=26 format=3 uid="uid://dk1x64ujkuto4"]
+
+[ext_resource type="Shader" path="res://addons/ez_transitions/shaders/scroll_shader.gdshader" id="1_4v1lf"]
+[ext_resource type="Texture2D" uid="uid://ujutctmbt2ax" path="res://addons/ez_transitions/images/checkerboard_texture.png" id="2_fymo8"]
+[ext_resource type="Texture2D" uid="uid://dovx338ff7u7n" path="res://addons/ez_transitions/images/plugin_icon.svg" id="3_3etxp"]
+[ext_resource type="FontFile" uid="uid://cjhjf5pqxtcqs" path="res://addons/ez_transitions/fonts/mini_pixel-7.ttf" id="4_q67u8"]
+[ext_resource type="Script" path="res://addons/ez_transitions/objects/main_container/basic_settings_script.gd" id="5_2hvyf"]
+[ext_resource type="Theme" uid="uid://djuojj8aridg" path="res://addons/ez_transitions/themes/main_theme.tres" id="5_l8ou1"]
+[ext_resource type="Script" path="res://addons/ez_transitions/objects/transition_overlay/transition_overlay_script.gd" id="6_d4a4f"]
+[ext_resource type="Script" path="res://addons/ez_transitions/objects/main_container/editor_control_script.gd" id="6_jbowr"]
+[ext_resource type="Shader" path="res://addons/ez_transitions/shaders/transition_shader.gdshader" id="7_go6qa"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hbqyv"]
+shader = ExtResource("1_4v1lf")
+shader_parameter/scroll_speed = Vector2(0.5, 0.5)
+shader_parameter/alpha = 0.35
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_atdpp"]
+blend_mode = 1
+
+[sub_resource type="Gradient" id="Gradient_8h3jn"]
+colors = PackedColorArray(1, 0.478431, 0.478431, 1, 1, 0.478431, 0.478431, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_xvtr7"]
+gradient = SubResource("Gradient_8h3jn")
+fill_to = Vector2(0, 1)
+
+[sub_resource type="Gradient" id="Gradient_32ene"]
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ldcd0"]
+gradient = SubResource("Gradient_32ene")
+fill_from = Vector2(0, 1)
+fill_to = Vector2(0, 0)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hrhhx"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_52qk3"]
+
+[sub_resource type="Gradient" id="Gradient_lym5o"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_n5vih"]
+gradient = SubResource("Gradient_lym5o")
+
+[sub_resource type="LabelSettings" id="LabelSettings_hcadf"]
+font = ExtResource("4_q67u8")
+font_size = 40
+outline_size = 8
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lqftc"]
+shader = ExtResource("7_go6qa")
+shader_parameter/screen_size = Vector2(506, 282)
+shader_parameter/progress = 0.0
+shader_parameter/pixel_size = 15.0
+shader_parameter/type = 0
+shader_parameter/reversed = false
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_mfnej"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_n4fqv"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_wtj6u"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_keric"]
+font = ExtResource("4_q67u8")
+font_size = 20
+outline_size = 4
+outline_color = Color(0, 0, 0, 1)
+
+[node name="MainContainer" type="VBoxContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = -2
+
+[node name="BackgroundControl" type="Control" parent="."]
+layout_mode = 2
+
+[node name="BackgroundTexture" type="TextureRect" parent="BackgroundControl"]
+texture_filter = 1
+texture_repeat = 2
+material = SubResource("ShaderMaterial_hbqyv")
+clip_contents = true
+layout_mode = 2
+offset_left = 8.0
+offset_right = 673.0
+offset_bottom = 440.0
+scale = Vector2(2, 2)
+texture = ExtResource("2_fymo8")
+stretch_mode = 1
+
+[node name="GlowTexture" type="TextureRect" parent="BackgroundControl"]
+modulate = Color(1, 1, 1, 0.321569)
+texture_filter = 1
+texture_repeat = 2
+material = SubResource("CanvasItemMaterial_atdpp")
+clip_contents = true
+layout_mode = 2
+offset_left = 8.0
+offset_right = 673.0
+offset_bottom = 440.0
+scale = Vector2(2, 2)
+texture = SubResource("GradientTexture2D_xvtr7")
+
+[node name="ShadowTexture" type="TextureRect" parent="BackgroundControl"]
+modulate = Color(1, 1, 1, 0.321569)
+texture_filter = 1
+texture_repeat = 2
+clip_contents = true
+layout_mode = 2
+offset_left = 8.0
+offset_right = 673.0
+offset_bottom = 440.0
+scale = Vector2(2, 2)
+texture = SubResource("GradientTexture2D_ldcd0")
+
+[node name="IconTexture" type="TextureRect" parent="BackgroundControl"]
+layout_mode = 0
+offset_left = 1264.0
+offset_top = 16.0
+offset_right = 1824.0
+offset_bottom = 576.0
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("3_3etxp")
+
+[node name="CreditsLabel" type="RichTextLabel" parent="BackgroundControl"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 664.0
+offset_top = -16.0
+offset_right = 1248.0
+offset_bottom = 64.0
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.392157)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 5
+theme_override_constants/outline_size = 8
+theme_override_fonts/normal_font = ExtResource("4_q67u8")
+theme_override_font_sizes/normal_font_size = 40
+theme_override_styles/focus = SubResource("StyleBoxEmpty_hrhhx")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_52qk3")
+bbcode_enabled = true
+text = " [right][wave amp=20.0 freq=5.0]EzTransitions by IsItLucas?"
+fit_content = true
+scroll_active = false
+
+[node name="DivisionTextureA" type="TextureRect" parent="."]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+texture = SubResource("GradientTexture2D_n5vih")
+
+[node name="BasicTitleLabel" type="RichTextLabel" parent="."]
+texture_filter = 1
+layout_mode = 2
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.392157)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/shadow_outline_size = 8
+theme_override_constants/outline_size = 8
+theme_override_fonts/normal_font = ExtResource("4_q67u8")
+theme_override_font_sizes/normal_font_size = 40
+theme_override_styles/focus = SubResource("StyleBoxEmpty_hrhhx")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_52qk3")
+bbcode_enabled = true
+text = "  [wave amp=20.0 freq=5.0]Basic Settings:"
+fit_content = true
+scroll_active = false
+
+[node name="BasicSettingsContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 23
+script = ExtResource("5_2hvyf")
+
+[node name="HContainer" type="HBoxContainer" parent="BasicSettingsContainer"]
+layout_mode = 2
+theme_override_constants/separation = 40
+
+[node name="TransitionsCheckbox" type="CheckBox" parent="BasicSettingsContainer/HContainer"]
+texture_filter = 1
+layout_mode = 2
+focus_mode = 1
+theme = ExtResource("5_l8ou1")
+button_pressed = true
+text = "Transitions Enabled?"
+
+[node name="DebugCheckbox" type="CheckBox" parent="BasicSettingsContainer/HContainer"]
+texture_filter = 1
+layout_mode = 2
+focus_mode = 1
+theme = ExtResource("5_l8ou1")
+button_pressed = true
+text = "Debug Mode?"
+
+[node name="SpeedSpinbox" type="SpinBox" parent="BasicSettingsContainer/HContainer"]
+texture_filter = 1
+custom_minimum_size = Vector2(85, 0)
+layout_mode = 2
+focus_mode = 1
+theme = ExtResource("5_l8ou1")
+min_value = 0.1
+max_value = 10.0
+step = 0.05
+value = 1.0
+suffix = "x"
+
+[node name="SpeedLabel" type="Label" parent="BasicSettingsContainer/HContainer/SpeedSpinbox"]
+texture_filter = 1
+layout_mode = 2
+offset_left = 92.0
+offset_right = 236.0
+offset_bottom = 43.0
+text = "Speed Scale"
+label_settings = SubResource("LabelSettings_hcadf")
+
+[node name="EditorTitleLabel" type="RichTextLabel" parent="."]
+texture_filter = 1
+layout_mode = 2
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.392157)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/shadow_outline_size = 8
+theme_override_constants/outline_size = 8
+theme_override_fonts/normal_font = ExtResource("4_q67u8")
+theme_override_font_sizes/normal_font_size = 40
+theme_override_styles/focus = SubResource("StyleBoxEmpty_hrhhx")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_52qk3")
+bbcode_enabled = true
+text = "
+  [wave amp=20.0 freq=5.0]Transition Editor:"
+fit_content = true
+scroll_active = false
+
+[node name="EditorControl" type="Control" parent="."]
+layout_mode = 2
+script = ExtResource("6_jbowr")
+
+[node name="OutlineRect" type="ColorRect" parent="EditorControl"]
+modulate = Color(0, 0, 0, 1)
+clip_contents = true
+layout_mode = 2
+offset_left = 24.0
+offset_top = 2.0
+offset_right = 536.0
+offset_bottom = 290.0
+
+[node name="BackgroundRect" type="ColorRect" parent="EditorControl"]
+clip_contents = true
+layout_mode = 2
+offset_left = 27.0
+offset_top = 5.0
+offset_right = 533.0
+offset_bottom = 287.0
+
+[node name="TransitionOverlay" type="TextureRect" parent="EditorControl"]
+material = SubResource("ShaderMaterial_lqftc")
+layout_mode = 0
+offset_left = 27.0
+offset_top = 5.0
+offset_right = 533.0
+offset_bottom = 287.0
+texture = SubResource("PlaceholderTexture2D_mfnej")
+script = ExtResource("6_d4a4f")
+INTRO_TEXTURE = SubResource("GradientTexture2D_n4fqv")
+OUTRO_TEXTURE = SubResource("GradientTexture2D_wtj6u")
+
+[node name="Intro" type="Control" parent="EditorControl"]
+anchors_preset = 0
+offset_left = 34.0
+offset_right = 74.0
+offset_bottom = 40.0
+
+[node name="TitleLabel" type="RichTextLabel" parent="EditorControl/Intro"]
+texture_filter = 1
+layout_mode = 2
+offset_left = 565.0
+offset_top = -4.0
+offset_right = 799.0
+offset_bottom = 36.0
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.392157)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/shadow_outline_size = 8
+theme_override_constants/outline_size = 8
+theme_override_fonts/normal_font = ExtResource("4_q67u8")
+theme_override_font_sizes/normal_font_size = 40
+theme_override_styles/focus = SubResource("StyleBoxEmpty_hrhhx")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_52qk3")
+bbcode_enabled = true
+text = " [wave amp=20.0 freq=5.0]Intro:"
+fit_content = true
+scroll_active = false
+
+[node name="EaseLabel" type="RichTextLabel" parent="EditorControl/Intro"]
+texture_filter = 1
+layout_mode = 2
+offset_left = 561.0
+offset_top = 44.0
+offset_right = 795.0
+offset_bottom = 64.0
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.392157)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/shadow_outline_size = 8
+theme_override_constants/outline_size = 8
+theme_override_fonts/normal_font = ExtResource("4_q67u8")
+theme_override_font_sizes/normal_font_size = 20
+theme_override_styles/focus = SubResource("StyleBoxEmpty_hrhhx")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_52qk3")
+bbcode_enabled = true
+text = "[wave amp=20.0 freq=5.0] Tween Easing:
+"
+fit_content = true
+scroll_active = false
+
+[node name="FadeInCheckbox" type="CheckBox" parent="EditorControl/Intro" groups=["EasingCheckboxIntro"]]
+texture_filter = 1
+layout_mode = 2
+offset_left = 565.0
+offset_top = 68.0
+offset_right = 799.0
+offset_bottom = 108.0
+scale = Vector2(0.5, 0.5)
+theme = ExtResource("5_l8ou1")
+theme_override_constants/outline_size = 8
+button_pressed = true
+text = "Fade In"
+
+[node name="FadeOutCheckbox" type="CheckBox" parent="EditorControl/Intro" groups=["EasingCheckboxIntro"]]
+z_index = 1
+texture_filter = 1
+layout_mode = 2
+offset_left = 565.0
+offset_top = 89.0
+offset_right = 799.0
+offset_bottom = 129.0
+scale = Vector2(0.5, 0.5)
+theme = ExtResource("5_l8ou1")
+theme_override_constants/outline_size = 8
+text = "Fade Out"
+
+[node name="FadeInOutCheckbox" type="CheckBox" parent="EditorControl/Intro" groups=["EasingCheckboxIntro"]]
+z_index = 2
+texture_filter = 1
+layout_mode = 2
+offset_left = 565.0
+offset_top = 110.0
+offset_right = 799.0
+offset_bottom = 150.0
+scale = Vector2(0.5, 0.5)
+theme = ExtResource("5_l8ou1")
+theme_override_constants/outline_size = 8
+text = "Fade In Out"
+
+[node name="FadeOutInCheckbox" type="CheckBox" parent="EditorControl/Intro" groups=["EasingCheckboxIntro"]]
+z_index = 3
+texture_filter = 1
+layout_mode = 2
+offset_left = 565.0
+offset_top = 131.0
+offset_right = 799.0
+offset_bottom = 171.0
+scale = Vector2(0.5, 0.5)
+theme = ExtResource("5_l8ou1")
+theme_override_constants/outline_size = 8
+text = "Fade Out In"
+
+[node name="TransitionLabel" type="RichTextLabel" parent="EditorControl/Intro"]
+texture_filter = 1
+layout_mode = 2
+offset_left = 561.0
+offset_top = 162.0
+offset_right = 795.0
+offset_bottom = 182.0
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.392157)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/shadow_outline_size = 8
+theme_override_constants/outline_size = 8
+theme_override_fonts/normal_font = ExtResource("4_q67u8")
+theme_override_font_sizes/normal_font_size = 20
+theme_override_styles/focus = SubResource("StyleBoxEmpty_hrhhx")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_52qk3")
+bbcode_enabled = true
+text = "[wave amp=20.0 freq=5.0] Tween Transition:
+"
+fit_content = true
+scroll_active = false
+
+[node name="LinearCheckbox" type="CheckBox" parent="EditorControl/Intro" groups=["TransitionCheckboxIntro"]]
+texture_filter = 1
+layout_mode = 2
+offset_left = 565.0
+offset_top = 186.0
+offset_right = 799.0
+offset_bottom = 226.0
+scale = Vector2(0.5, 0.5)
+theme = ExtResource("5_l8ou1")
+theme_override_constants/outline_size = 8
+text = "Linear"
+
+[node name="SineCheckbox" type="CheckBox" parent="EditorControl/Intro" groups=["TransitionCheckboxIntro"]]
+z_index = 1
+texture_filter = 1
+layout_mode = 2
+offset_left = 565.0
+offset_top = 207.0
+offset_right = 799.0
+offset_bottom = 247.0
+scale = Vector2(0.5, 0.5)
+theme = ExtResource("5_l8ou1")
+theme_override_constants/outline_size = 8
+text = "Sine"
+
+[node name="QuintCheckbox" type="CheckBox" parent="EditorControl/Intro" groups=["TransitionCheckboxIntro"]]
+z_index = 2
+texture_filter = 1
+layout_mode = 2
+offset_left = 565.0
+offset_top = 228.0
+offset_right = 799.0
+offset_bottom = 268.0
+scale = Vector2(0.5, 0.5)
+theme = ExtResource("5_l8ou1")
+theme_override_constants/outline_size = 8
+button_pressed = true
+text = "Quint"
+
+[node name="QuartCheckbox" type="CheckBox" parent="EditorControl/Intro" groups=["TransitionCheckboxIntro"]]
+z_index = 3
+texture_filter = 1
+layout_mode = 2
+offset_left = 565.0
+offset_top = 249.0
+offset_right = 799.0
+offset_bottom = 289.0
+scale = Vector2(0.5, 0.5)
+theme = ExtResource("5_l8ou1")
+theme_override_constants/outline_size = 8
+text = "Quart"
+
+[node name="QuadCheckbox" type="CheckBox" parent="EditorControl/Intro" groups=["TransitionCheckboxIntro"]]
+z_index = 4
+texture_filter = 1
+layout_mode = 2
+offset_left = 565.0
+offset_top = 270.0
+offset_right = 799.0
+offset_bottom = 310.0
+scale = Vector2(0.5, 0.5)
+theme = ExtResource("5_l8ou1")
+theme_override_constants/outline_size = 8
+text = "Quad"
+
+[node name="ExpoCheckbox" type="CheckBox" parent="EditorControl/Intro" groups=["TransitionCheckboxIntro"]]
+z_index = 5
+texture_filter = 1
+layout_mode = 2
+offset_left = 565.0
+offset_top = 291.0
+offset_right = 799.0
+offset_bottom = 331.0
+scale = Vector2(0.5, 0.5)
+theme = ExtResource("5_l8ou1")
+theme_override_constants/outline_size = 8
+text = "Expo"
+
+[node name="ElasticCheckbox" type="CheckBox" parent="EditorControl/Intro" groups=["TransitionCheckboxIntro"]]
+z_index = 6
+texture_filter = 1
+layout_mode = 2
+offset_left = 663.0
+offset_top = 186.0
+offset_right = 897.0
+offset_bottom = 226.0
+scale = Vector2(0.5, 0.5)
+theme = ExtResource("5_l8ou1")
+theme_override_constants/outline_size = 8
+text = "Elastic"
+
+[node name="CubicCheckbox" type="CheckBox" parent="EditorControl/Intro" groups=["TransitionCheckboxIntro"]]
+z_index = 7
+texture_filter = 1
+layout_mode = 2
+offset_left = 663.0
+offset_top = 207.0
+offset_right = 897.0
+offset_bottom = 247.0
+scale = Vector2(0.5, 0.5)
+theme = ExtResource("5_l8ou1")
+theme_override_constants/outline_size = 8
+text = "Cubic"
+
+[node name="CircCheckbox" type="CheckBox" parent="EditorControl/Intro" groups=["TransitionCheckboxIntro"]]
+z_index = 8
+texture_filter = 1
+layout_mode = 2
+offset_left = 663.0
+offset_top = 228.0
+offset_right = 897.0
+offset_bottom = 268.0
+scale = Vector2(0.5, 0.5)
+theme = ExtResource("5_l8ou1")
+theme_override_constants/outline_size = 8
+text = "Circ"
+
+[node name="BounceCheckbox" type="CheckBox" parent="EditorControl/Intro" groups=["TransitionCheckboxIntro"]]
+z_index = 9
+texture_filter = 1
+layout_mode = 2
+offset_left = 663.0
+offset_top = 249.0
+offset_right = 897.0
+offset_bottom = 289.0
+scale = Vector2(0.5, 0.5)
+theme = ExtResource("5_l8ou1")
+theme_override_constants/outline_size = 8
+text = "Bounce"
+
+[node name="BackCheckbox" type="CheckBox" parent="EditorControl/Intro" groups=["TransitionCheckboxIntro"]]
+z_index = 10
+texture_filter = 1
+layout_mode = 2
+offset_left = 663.0
+offset_top = 270.0
+offset_right = 897.0
+offset_bottom = 310.0
+scale = Vector2(0.5, 0.5)
+theme = ExtResource("5_l8ou1")
+theme_override_constants/outline_size = 8
+text = "Back"
+
+[node name="SpringCheckbox" type="CheckBox" parent="EditorControl/Intro" groups=["TransitionCheckboxIntro"]]
+z_index = 11
+texture_filter = 1
+layout_mode = 2
+offset_left = 663.0
+offset_top = 291.0
+offset_right = 897.0
+offset_bottom = 331.0
+scale = Vector2(0.5, 0.5)
+theme = ExtResource("5_l8ou1")
+theme_override_constants/outline_size = 8
+text = "Spring"
+
+[node name="ExtraLabel" type="RichTextLabel" parent="EditorControl/Intro"]
+texture_filter = 1
+layout_mode = 2
+offset_left = 561.0
+offset_top = 322.0
+offset_right = 795.0
+offset_bottom = 342.0
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.392157)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/shadow_outline_size = 8
+theme_override_constants/outline_size = 8
+theme_override_fonts/normal_font = ExtResource("4_q67u8")
+theme_override_font_sizes/normal_font_size = 20
+theme_override_styles/focus = SubResource("StyleBoxEmpty_hrhhx")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_52qk3")
+bbcode_enabled = true
+text = "[wave amp=20.0 freq=5.0] Extra Settings:
+"
+fit_content = true
+scroll_active = false
+
+[node name="ReverseCheckbox" type="CheckBox" parent="EditorControl/Intro"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 565.0
+offset_top = 345.0
+offset_right = 849.0
+offset_bottom = 385.0
+scale = Vector2(0.5, 0.5)
+theme = ExtResource("5_l8ou1")
+theme_override_constants/outline_size = 8
+text = "Reverse Animation?"
+
+[node name="DurationSpinbox" type="SpinBox" parent="EditorControl/Intro"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 570.0
+offset_top = 375.0
+offset_right = 654.0
+offset_bottom = 399.0
+focus_mode = 1
+theme = ExtResource("5_l8ou1")
+max_value = 99.0
+step = 0.05
+value = 1.0
+suffix = "s"
+
+[node name="Label" type="Label" parent="EditorControl/Intro/DurationSpinbox"]
+texture_filter = 1
+layout_mode = 2
+offset_left = 92.0
+offset_top = 3.0
+offset_right = 236.0
+offset_bottom = 26.0
+text = "Duration"
+label_settings = SubResource("LabelSettings_keric")
+
+[node name="DelaySpinbox" type="SpinBox" parent="EditorControl/Intro"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 570.0
+offset_top = 405.0
+offset_right = 654.0
+offset_bottom = 429.0
+focus_mode = 1
+theme = ExtResource("5_l8ou1")
+max_value = 99.0
+step = 0.05
+suffix = "s"
+
+[node name="Label" type="Label" parent="EditorControl/Intro/DelaySpinbox"]
+texture_filter = 1
+layout_mode = 2
+offset_left = 92.0
+offset_top = 3.0
+offset_right = 236.0
+offset_bottom = 26.0
+text = "Delay to Proceed"
+label_settings = SubResource("LabelSettings_keric")
+
+[node name="TextureEdit" type="LineEdit" parent="EditorControl/Intro"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 570.0
+offset_top = 460.0
+offset_right = 886.0
+offset_bottom = 484.0
+theme = ExtResource("5_l8ou1")
+text = "res://addons/ez_transitions/images/black_texture.png"
+
+[node name="Label" type="Label" parent="EditorControl/Intro/TextureEdit"]
+texture_filter = 1
+layout_mode = 0
+offset_left = -4.0
+offset_top = -20.0
+offset_right = 140.0
+offset_bottom = 3.0
+text = "Texture Path:"
+label_settings = SubResource("LabelSettings_keric")
+
+[node name="TypeLabel" type="RichTextLabel" parent="EditorControl/Intro"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 561.0
+offset_top = 497.0
+offset_right = 795.0
+offset_bottom = 517.0
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.392157)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/shadow_outline_size = 8
+theme_override_constants/outline_size = 8
+theme_override_fonts/normal_font = ExtResource("4_q67u8")
+theme_override_font_sizes/normal_font_size = 20
+theme_override_styles/focus = SubResource("StyleBoxEmpty_hrhhx")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_52qk3")
+bbcode_enabled = true
+text = "[wave amp=20.0 freq=5.0] Transition Type:
+"
+fit_content = true
+scroll_active = false
+
+[node name="DiamondsCheckbox" type="CheckBox" parent="EditorControl/Intro" groups=["TypeCheckboxIntro"]]
+texture_filter = 1
+layout_mode = 0
+offset_left = 565.0
+offset_top = 521.0
+offset_right = 799.0
+offset_bottom = 561.0
+scale = Vector2(0.5, 0.5)
+theme = ExtResource("5_l8ou1")
+theme_override_constants/outline_size = 8
+text = "Diamonds"
+
+[node name="CircleCheckbox" type="CheckBox" parent="EditorControl/Intro" groups=["TypeCheckboxIntro"]]
+z_index = 1
+texture_filter = 1
+layout_mode = 0
+offset_left = 565.0
+offset_top = 542.0
+offset_right = 799.0
+offset_bottom = 582.0
+scale = Vector2(0.5, 0.5)
+theme = ExtResource("5_l8ou1")
+theme_override_constants/outline_size = 8
+text = "Circle"
+
+[node name="VerticalCheckbox" type="CheckBox" parent="EditorControl/Intro" groups=["TypeCheckboxIntro"]]
+z_index = 2
+texture_filter = 1
+layout_mode = 0
+offset_left = 565.0
+offset_top = 563.0
+offset_right = 799.0
+offset_bottom = 603.0
+scale = Vector2(0.5, 0.5)
+theme = ExtResource("5_l8ou1")
+theme_override_constants/outline_size = 8
+text = "Vertical Cut"
+
+[node name="HorizontalCheckbox" type="CheckBox" parent="EditorControl/Intro" groups=["TypeCheckboxIntro"]]
+z_index = 3
+texture_filter = 1
+layout_mode = 0
+offset_left = 565.0
+offset_top = 584.0
+offset_right = 799.0
+offset_bottom = 624.0
+scale = Vector2(0.5, 0.5)
+theme = ExtResource("5_l8ou1")
+theme_override_constants/outline_size = 8
+text = "Horizontal Cut"
+
+[node name="FadeCheckbox" type="CheckBox" parent="EditorControl/Intro" groups=["TypeCheckboxIntro"]]
+z_index = 4
+texture_filter = 1
+layout_mode = 0
+offset_left = 565.0
+offset_top = 605.0
+offset_right = 799.0
+offset_bottom = 645.0
+scale = Vector2(0.5, 0.5)
+theme = ExtResource("5_l8ou1")
+theme_override_constants/outline_size = 8
+text = "Fade"
+
+[node name="Outro" type="Control" parent="EditorControl"]
+anchors_preset = 0
+offset_left = 376.0
+offset_right = 416.0
+offset_bottom = 40.0
+
+[node name="TitleLabel" type="RichTextLabel" parent="EditorControl/Outro"]
+texture_filter = 1
+layout_mode = 2
+offset_left = 565.0
+offset_top = -4.0
+offset_right = 799.0
+offset_bottom = 36.0
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.392157)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/shadow_outline_size = 8
+theme_override_constants/outline_size = 8
+theme_override_fonts/normal_font = ExtResource("4_q67u8")
+theme_override_font_sizes/normal_font_size = 40
+theme_override_styles/focus = SubResource("StyleBoxEmpty_hrhhx")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_52qk3")
+bbcode_enabled = true
+text = " [wave amp=20.0 freq=5.0]Outro:"
+fit_content = true
+scroll_active = false
+
+[node name="EaseLabel" type="RichTextLabel" parent="EditorControl/Outro"]
+texture_filter = 1
+layout_mode = 2
+offset_left = 561.0
+offset_top = 44.0
+offset_right = 795.0
+offset_bottom = 64.0
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.392157)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/shadow_outline_size = 8
+theme_override_constants/outline_size = 8
+theme_override_fonts/normal_font = ExtResource("4_q67u8")
+theme_override_font_sizes/normal_font_size = 20
+theme_override_styles/focus = SubResource("StyleBoxEmpty_hrhhx")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_52qk3")
+bbcode_enabled = true
+text = "[wave amp=20.0 freq=5.0] Tween Easing:
+"
+fit_content = true
+scroll_active = false
+
+[node name="FadeInCheckbox" type="CheckBox" parent="EditorControl/Outro" groups=["EasingCheckboxOutro"]]
+texture_filter = 1
+layout_mode = 2
+offset_left = 565.0
+offset_top = 68.0
+offset_right = 799.0
+offset_bottom = 108.0
+scale = Vector2(0.5, 0.5)
+theme = ExtResource("5_l8ou1")
+theme_override_constants/outline_size = 8
+text = "Fade In"
+
+[node name="FadeOutCheckbox" type="CheckBox" parent="EditorControl/Outro" groups=["EasingCheckboxOutro"]]
+z_index = 1
+texture_filter = 1
+layout_mode = 2
+offset_left = 565.0
+offset_top = 89.0
+offset_right = 799.0
+offset_bottom = 129.0
+scale = Vector2(0.5, 0.5)
+theme = ExtResource("5_l8ou1")
+theme_override_constants/outline_size = 8
+button_pressed = true
+text = "Fade Out"
+
+[node name="FadeInOutCheckbox" type="CheckBox" parent="EditorControl/Outro" groups=["EasingCheckboxOutro"]]
+z_index = 2
+texture_filter = 1
+layout_mode = 2
+offset_left = 565.0
+offset_top = 110.0
+offset_right = 799.0
+offset_bottom = 150.0
+scale = Vector2(0.5, 0.5)
+theme = ExtResource("5_l8ou1")
+theme_override_constants/outline_size = 8
+text = "Fade In Out"
+
+[node name="FadeOutInCheckbox" type="CheckBox" parent="EditorControl/Outro" groups=["EasingCheckboxOutro"]]
+z_index = 3
+texture_filter = 1
+layout_mode = 2
+offset_left = 565.0
+offset_top = 131.0
+offset_right = 799.0
+offset_bottom = 171.0
+scale = Vector2(0.5, 0.5)
+theme = ExtResource("5_l8ou1")
+theme_override_constants/outline_size = 8
+text = "Fade Out In"
+
+[node name="TransitionLabel" type="RichTextLabel" parent="EditorControl/Outro"]
+texture_filter = 1
+layout_mode = 2
+offset_left = 561.0
+offset_top = 162.0
+offset_right = 795.0
+offset_bottom = 182.0
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.392157)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/shadow_outline_size = 8
+theme_override_constants/outline_size = 8
+theme_override_fonts/normal_font = ExtResource("4_q67u8")
+theme_override_font_sizes/normal_font_size = 20
+theme_override_styles/focus = SubResource("StyleBoxEmpty_hrhhx")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_52qk3")
+bbcode_enabled = true
+text = "[wave amp=20.0 freq=5.0] Tween Transition:
+"
+fit_content = true
+scroll_active = false
+
+[node name="LinearCheckbox" type="CheckBox" parent="EditorControl/Outro" groups=["TransitionCheckboxOutro"]]
+texture_filter = 1
+layout_mode = 2
+offset_left = 565.0
+offset_top = 186.0
+offset_right = 799.0
+offset_bottom = 226.0
+scale = Vector2(0.5, 0.5)
+theme = ExtResource("5_l8ou1")
+theme_override_constants/outline_size = 8
+text = "Linear"
+
+[node name="SineCheckbox" type="CheckBox" parent="EditorControl/Outro" groups=["TransitionCheckboxOutro"]]
+z_index = 1
+texture_filter = 1
+layout_mode = 2
+offset_left = 565.0
+offset_top = 207.0
+offset_right = 799.0
+offset_bottom = 247.0
+scale = Vector2(0.5, 0.5)
+theme = ExtResource("5_l8ou1")
+theme_override_constants/outline_size = 8
+text = "Sine"
+
+[node name="QuintCheckbox" type="CheckBox" parent="EditorControl/Outro" groups=["TransitionCheckboxOutro"]]
+z_index = 2
+texture_filter = 1
+layout_mode = 2
+offset_left = 565.0
+offset_top = 228.0
+offset_right = 799.0
+offset_bottom = 268.0
+scale = Vector2(0.5, 0.5)
+theme = ExtResource("5_l8ou1")
+theme_override_constants/outline_size = 8
+button_pressed = true
+text = "Quint"
+
+[node name="QuartCheckbox" type="CheckBox" parent="EditorControl/Outro" groups=["TransitionCheckboxOutro"]]
+z_index = 3
+texture_filter = 1
+layout_mode = 2
+offset_left = 565.0
+offset_top = 249.0
+offset_right = 799.0
+offset_bottom = 289.0
+scale = Vector2(0.5, 0.5)
+theme = ExtResource("5_l8ou1")
+theme_override_constants/outline_size = 8
+text = "Quart"
+
+[node name="QuadCheckbox" type="CheckBox" parent="EditorControl/Outro" groups=["TransitionCheckboxOutro"]]
+z_index = 4
+texture_filter = 1
+layout_mode = 2
+offset_left = 565.0
+offset_top = 270.0
+offset_right = 799.0
+offset_bottom = 310.0
+scale = Vector2(0.5, 0.5)
+theme = ExtResource("5_l8ou1")
+theme_override_constants/outline_size = 8
+text = "Quad"
+
+[node name="ExpoCheckbox" type="CheckBox" parent="EditorControl/Outro" groups=["TransitionCheckboxOutro"]]
+z_index = 5
+texture_filter = 1
+layout_mode = 2
+offset_left = 565.0
+offset_top = 291.0
+offset_right = 799.0
+offset_bottom = 331.0
+scale = Vector2(0.5, 0.5)
+theme = ExtResource("5_l8ou1")
+theme_override_constants/outline_size = 8
+text = "Expo"
+
+[node name="ElasticCheckbox" type="CheckBox" parent="EditorControl/Outro" groups=["TransitionCheckboxOutro"]]
+z_index = 6
+texture_filter = 1
+layout_mode = 2
+offset_left = 663.0
+offset_top = 186.0
+offset_right = 897.0
+offset_bottom = 226.0
+scale = Vector2(0.5, 0.5)
+theme = ExtResource("5_l8ou1")
+theme_override_constants/outline_size = 8
+text = "Elastic"
+
+[node name="CubicCheckbox" type="CheckBox" parent="EditorControl/Outro" groups=["TransitionCheckboxOutro"]]
+z_index = 7
+texture_filter = 1
+layout_mode = 2
+offset_left = 663.0
+offset_top = 207.0
+offset_right = 897.0
+offset_bottom = 247.0
+scale = Vector2(0.5, 0.5)
+theme = ExtResource("5_l8ou1")
+theme_override_constants/outline_size = 8
+text = "Cubic"
+
+[node name="CircCheckbox" type="CheckBox" parent="EditorControl/Outro" groups=["TransitionCheckboxOutro"]]
+z_index = 8
+texture_filter = 1
+layout_mode = 2
+offset_left = 663.0
+offset_top = 228.0
+offset_right = 897.0
+offset_bottom = 268.0
+scale = Vector2(0.5, 0.5)
+theme = ExtResource("5_l8ou1")
+theme_override_constants/outline_size = 8
+text = "Circ"
+
+[node name="BounceCheckbox" type="CheckBox" parent="EditorControl/Outro" groups=["TransitionCheckboxOutro"]]
+z_index = 9
+texture_filter = 1
+layout_mode = 2
+offset_left = 663.0
+offset_top = 249.0
+offset_right = 897.0
+offset_bottom = 289.0
+scale = Vector2(0.5, 0.5)
+theme = ExtResource("5_l8ou1")
+theme_override_constants/outline_size = 8
+text = "Bounce"
+
+[node name="BackCheckbox" type="CheckBox" parent="EditorControl/Outro" groups=["TransitionCheckboxOutro"]]
+z_index = 10
+texture_filter = 1
+layout_mode = 2
+offset_left = 663.0
+offset_top = 270.0
+offset_right = 897.0
+offset_bottom = 310.0
+scale = Vector2(0.5, 0.5)
+theme = ExtResource("5_l8ou1")
+theme_override_constants/outline_size = 8
+text = "Back"
+
+[node name="SpringCheckbox" type="CheckBox" parent="EditorControl/Outro" groups=["TransitionCheckboxOutro"]]
+z_index = 11
+texture_filter = 1
+layout_mode = 2
+offset_left = 663.0
+offset_top = 291.0
+offset_right = 897.0
+offset_bottom = 331.0
+scale = Vector2(0.5, 0.5)
+theme = ExtResource("5_l8ou1")
+theme_override_constants/outline_size = 8
+text = "Spring"
+
+[node name="ExtraLabel" type="RichTextLabel" parent="EditorControl/Outro"]
+texture_filter = 1
+layout_mode = 2
+offset_left = 561.0
+offset_top = 322.0
+offset_right = 795.0
+offset_bottom = 342.0
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.392157)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/shadow_outline_size = 8
+theme_override_constants/outline_size = 8
+theme_override_fonts/normal_font = ExtResource("4_q67u8")
+theme_override_font_sizes/normal_font_size = 20
+theme_override_styles/focus = SubResource("StyleBoxEmpty_hrhhx")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_52qk3")
+bbcode_enabled = true
+text = "[wave amp=20.0 freq=5.0] Extra Settings:
+"
+fit_content = true
+scroll_active = false
+
+[node name="ReverseCheckbox" type="CheckBox" parent="EditorControl/Outro"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 565.0
+offset_top = 345.0
+offset_right = 849.0
+offset_bottom = 385.0
+scale = Vector2(0.5, 0.5)
+theme = ExtResource("5_l8ou1")
+theme_override_constants/outline_size = 8
+button_pressed = true
+text = "Reverse Animation?"
+
+[node name="DurationSpinbox" type="SpinBox" parent="EditorControl/Outro"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 570.0
+offset_top = 375.0
+offset_right = 656.0
+offset_bottom = 399.0
+focus_mode = 1
+theme = ExtResource("5_l8ou1")
+max_value = 99.0
+step = 0.05
+value = 1.0
+suffix = "s"
+
+[node name="Label" type="Label" parent="EditorControl/Outro/DurationSpinbox"]
+texture_filter = 1
+layout_mode = 2
+offset_left = 92.0
+offset_top = 3.0
+offset_right = 236.0
+offset_bottom = 26.0
+text = "Duration"
+label_settings = SubResource("LabelSettings_keric")
+
+[node name="TextureEdit" type="LineEdit" parent="EditorControl/Outro"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 570.0
+offset_top = 460.0
+offset_right = 880.0
+offset_bottom = 484.0
+theme = ExtResource("5_l8ou1")
+text = "res://addons/ez_transitions/images/black_texture.png"
+
+[node name="Label" type="Label" parent="EditorControl/Outro/TextureEdit"]
+texture_filter = 1
+layout_mode = 0
+offset_left = -4.0
+offset_top = -20.0
+offset_right = 140.0
+offset_bottom = 3.0
+text = "Texture Path:"
+label_settings = SubResource("LabelSettings_keric")
+
+[node name="TypeLabel" type="RichTextLabel" parent="EditorControl/Outro"]
+texture_filter = 1
+layout_mode = 2
+offset_left = 561.0
+offset_top = 497.0
+offset_right = 795.0
+offset_bottom = 517.0
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.392157)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/shadow_outline_size = 8
+theme_override_constants/outline_size = 8
+theme_override_fonts/normal_font = ExtResource("4_q67u8")
+theme_override_font_sizes/normal_font_size = 20
+theme_override_styles/focus = SubResource("StyleBoxEmpty_hrhhx")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_52qk3")
+bbcode_enabled = true
+text = "[wave amp=20.0 freq=5.0] Transition Type:
+"
+fit_content = true
+scroll_active = false
+
+[node name="DiamondsCheckbox" type="CheckBox" parent="EditorControl/Outro" groups=["TypeCheckboxOutro"]]
+texture_filter = 1
+layout_mode = 2
+offset_left = 565.0
+offset_top = 521.0
+offset_right = 799.0
+offset_bottom = 561.0
+scale = Vector2(0.5, 0.5)
+theme = ExtResource("5_l8ou1")
+theme_override_constants/outline_size = 8
+text = "Diamonds"
+
+[node name="CircleCheckbox" type="CheckBox" parent="EditorControl/Outro" groups=["TypeCheckboxOutro"]]
+z_index = 1
+texture_filter = 1
+layout_mode = 2
+offset_left = 565.0
+offset_top = 542.0
+offset_right = 799.0
+offset_bottom = 582.0
+scale = Vector2(0.5, 0.5)
+theme = ExtResource("5_l8ou1")
+theme_override_constants/outline_size = 8
+text = "Circle"
+
+[node name="VerticalCheckbox" type="CheckBox" parent="EditorControl/Outro" groups=["TypeCheckboxOutro"]]
+z_index = 2
+texture_filter = 1
+layout_mode = 2
+offset_left = 565.0
+offset_top = 563.0
+offset_right = 799.0
+offset_bottom = 603.0
+scale = Vector2(0.5, 0.5)
+theme = ExtResource("5_l8ou1")
+theme_override_constants/outline_size = 8
+text = "Vertical Cut"
+
+[node name="HorizontalCheckbox" type="CheckBox" parent="EditorControl/Outro" groups=["TypeCheckboxOutro"]]
+z_index = 3
+texture_filter = 1
+layout_mode = 2
+offset_left = 565.0
+offset_top = 584.0
+offset_right = 799.0
+offset_bottom = 624.0
+scale = Vector2(0.5, 0.5)
+theme = ExtResource("5_l8ou1")
+theme_override_constants/outline_size = 8
+text = "Horizontal Cut"
+
+[node name="FadeCheckbox" type="CheckBox" parent="EditorControl/Outro" groups=["TypeCheckboxOutro"]]
+z_index = 4
+texture_filter = 1
+layout_mode = 2
+offset_left = 565.0
+offset_top = 605.0
+offset_right = 799.0
+offset_bottom = 645.0
+scale = Vector2(0.5, 0.5)
+theme = ExtResource("5_l8ou1")
+theme_override_constants/outline_size = 8
+text = "Fade"
+
+[node name="Panel" type="Control" parent="EditorControl"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="SceneEdit" type="LineEdit" parent="EditorControl/Panel"]
+layout_mode = 0
+offset_left = 29.0
+offset_top = 327.0
+offset_right = 496.0
+offset_bottom = 351.0
+theme = ExtResource("5_l8ou1")
+
+[node name="Label" type="Label" parent="EditorControl/Panel/SceneEdit"]
+texture_filter = 1
+layout_mode = 0
+offset_left = -4.0
+offset_top = -20.0
+offset_right = 140.0
+offset_bottom = 3.0
+text = "Next Scene File Path:"
+label_settings = SubResource("LabelSettings_keric")
+
+[node name="CopyButton" type="Button" parent="EditorControl/Panel"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 22.0
+offset_top = 353.0
+offset_right = 536.0
+offset_bottom = 401.0
+focus_mode = 0
+theme = ExtResource("5_l8ou1")
+text = "[Copy Code]"
+flat = true
+
+[node name="PreviewButton" type="Button" parent="EditorControl/Panel"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 22.0
+offset_top = 391.0
+offset_right = 536.0
+offset_bottom = 439.0
+focus_mode = 0
+theme = ExtResource("5_l8ou1")
+text = "[Preview Transition]"
+flat = true
+
+[connection signal="toggled" from="BasicSettingsContainer/HContainer/TransitionsCheckbox" to="BasicSettingsContainer" method="_on_transitions_checkbox_toggled"]
+[connection signal="toggled" from="BasicSettingsContainer/HContainer/DebugCheckbox" to="BasicSettingsContainer" method="_on_debug_checkbox_toggled"]
+[connection signal="value_changed" from="BasicSettingsContainer/HContainer/SpeedSpinbox" to="BasicSettingsContainer" method="_on_speed_spinbox_value_changed"]
+[connection signal="toggled" from="EditorControl/Intro/ReverseCheckbox" to="EditorControl" method="_on_intro_reverse_checkbox_toggled"]
+[connection signal="value_changed" from="EditorControl/Intro/DurationSpinbox" to="EditorControl" method="_on_intro_duration_spinbox_value_changed"]
+[connection signal="value_changed" from="EditorControl/Intro/DelaySpinbox" to="EditorControl" method="_on_intro_delay_spinbox_value_changed"]
+[connection signal="text_changed" from="EditorControl/Intro/TextureEdit" to="EditorControl" method="_on_intro_texture_edit_text_changed"]
+[connection signal="toggled" from="EditorControl/Outro/ReverseCheckbox" to="EditorControl" method="_on_outro_reverse_checkbox_toggled"]
+[connection signal="value_changed" from="EditorControl/Outro/DurationSpinbox" to="EditorControl" method="_on_outro_duration_spinbox_value_changed"]
+[connection signal="text_changed" from="EditorControl/Outro/TextureEdit" to="EditorControl" method="_on_outro_texture_edit_text_changed"]
+[connection signal="text_changed" from="EditorControl/Panel/SceneEdit" to="EditorControl" method="_on_scene_edit_text_changed"]
+[connection signal="pressed" from="EditorControl/Panel/CopyButton" to="EditorControl" method="_on_copy_button_pressed"]
+[connection signal="pressed" from="EditorControl/Panel/PreviewButton" to="EditorControl" method="_on_preview_button_pressed"]

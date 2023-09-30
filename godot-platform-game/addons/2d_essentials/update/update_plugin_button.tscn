@@ -1,0 +1,44 @@
+[gd_scene load_steps=5 format=3 uid="uid://b08kmaj6yrh7l"]
+
+[ext_resource type="Script" path="res://addons/2d_essentials/update/update_plugin_button.gd" id="1_jorwk"]
+[ext_resource type="PackedScene" uid="uid://behrceg6tb7ns" path="res://addons/2d_essentials/update/download_update_panel.tscn" id="2_6pjyg"]
+[ext_resource type="PackedScene" uid="uid://tpkg8wq468ml" path="res://addons/2d_essentials/update/updated_version_panel.tscn" id="3_oatl0"]
+[ext_resource type="PackedScene" uid="uid://b4vte1qfgj2de" path="res://addons/2d_essentials/update/failed_download_panel.tscn" id="4_vkblt"]
+
+[node name="UpdatePluginButton" type="Button"]
+visible = false
+text = "update"
+flat = true
+script = ExtResource("1_jorwk")
+
+[node name="HTTPRequest" type="HTTPRequest" parent="."]
+
+[node name="DownloadDialog" type="AcceptDialog" parent="."]
+title = ""
+position = Vector2i(323, 160)
+size = Vector2i(647, 320)
+min_size = Vector2i(300, 250)
+
+[node name="DownloadUpdatePanel" parent="DownloadDialog" instance=ExtResource("2_6pjyg")]
+offset_left = 8.0
+offset_top = 8.0
+offset_right = -8.0
+offset_bottom = -49.0
+
+[node name="UpdateCheckerTimer" type="Timer" parent="."]
+wait_time = 43200.0
+autostart = true
+
+[node name="UpdatedVersionDialog" type="AcceptDialog" parent="."]
+ok_button_text = "Restart"
+
+[node name="UpdatedVersionPanel" parent="UpdatedVersionDialog" instance=ExtResource("3_oatl0")]
+
+[node name="FailedDownloadDialog" type="AcceptDialog" parent="."]
+
+[node name="FailedDownloadPanel" parent="FailedDownloadDialog" instance=ExtResource("4_vkblt")]
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]
+[connection signal="request_completed" from="HTTPRequest" to="." method="_on_http_request_request_completed"]
+[connection signal="failed" from="DownloadDialog/DownloadUpdatePanel" to="." method="_on_download_update_panel_failed"]
+[connection signal="confirmed" from="UpdatedVersionDialog" to="." method="_on_updated_version_dialog_confirmed"]

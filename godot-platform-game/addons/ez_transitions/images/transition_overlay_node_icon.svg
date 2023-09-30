@@ -1,0 +1,9 @@
+<svg version="1.2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" height="16">
+	<title>transition_overlay_node_icon</title>
+	<defs>
+		<image  width="16" height="11" id="img1" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAALCAMAAABBPP0LAAAAAXNSR0IB2cksfwAAAIpQTFRFAAAAju+Xju+Xju+Xju+Xju+Xju+Xju+Xju+Xju+Xju+Xju+Xju+Xju+Xju+Xju+Xju+Xju+Xju+Xju+Xju+Xju+Xju+Xju+Xju+Xju+Xju+Xju+XjuOXju+Xju+Xju+Xju+Xju+Xju+Xju+Xju+Xju+Xju+Xju+Xju+Xju+Xju+Xju+Xju+Xju+XedIwfwAAAC50Uk5TAAkfIQSR//wMYrroZ9oWqkv3Ev4eFQu72HF7nAnf9LN1c/gQAjUrBa9P3KH6LLG0Wf8AAAB1SURBVHicPY5ZEoJADAUbxaCiIorLsDiouMv9r8ekBuiPVF6nkgo4gonWaYhnJo5ovljGstK8Fs9G+wS2MqDTdMd+FNnhSHbCh7MxJi+kpOrFxVpbX91WxW1cuTfwSHgOOdKj8oJ3L9xbTWrUfjR++f1FWugA/t4G3t6V7vEAAAAASUVORK5CYII="/>
+	</defs>
+	<style>
+	</style>
+	<use id="Background" href="#img1" x="0" y="2"/>
+</svg>

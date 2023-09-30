@@ -1,0 +1,120 @@
+[gd_scene load_steps=13 format=3 uid="uid://hf1tg878kdkt"]
+
+[ext_resource type="Script" path="res://scripts/dust.gd" id="1_pke1y"]
+[ext_resource type="Texture2D" uid="uid://vysjhoj8mh1a" path="res://assets/effects/dust/jump_dust.png" id="2_qosjq"]
+
+[sub_resource type="Animation" id="Animation_5ret7"]
+resource_name = "jump_dust"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"default"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:frame")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("..")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7yb8n"]
+_data = {
+"jump_dust": SubResource("Animation_5ret7")
+}
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yb8cd"]
+atlas = ExtResource("2_qosjq")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_823s8"]
+atlas = ExtResource("2_qosjq")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_srfec"]
+atlas = ExtResource("2_qosjq")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5srdt"]
+atlas = ExtResource("2_qosjq")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pdiij"]
+atlas = ExtResource("2_qosjq")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ym0yp"]
+atlas = ExtResource("2_qosjq")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a5ygb"]
+atlas = ExtResource("2_qosjq")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hajt1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yb8cd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_823s8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_srfec")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5srdt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pdiij")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ym0yp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a5ygb")
+}],
+"loop": true,
+"name": &"default",
+"speed": 7.0
+}]
+
+[node name="Dust" type="Node2D"]
+script = ExtResource("1_pke1y")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../AnimatedSprite2D")
+libraries = {
+"": SubResource("AnimationLibrary_7yb8n")
+}
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -17)
+sprite_frames = SubResource("SpriteFrames_hajt1")

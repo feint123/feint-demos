@@ -1,0 +1,38 @@
+[gd_scene load_steps=4 format=3 uid="uid://bn3jouxh7pjbv"]
+
+[ext_resource type="Theme" uid="uid://dga04c501s0oa" path="res://assets/theme.tres" id="1_sv870"]
+[ext_resource type="Script" path="res://scripts/PauseOverlay.gd" id="2_j8yg3"]
+[ext_resource type="PackedScene" uid="uid://bdfawue1mkm2y" path="res://scenes/ui/click_audio.tscn" id="3_38qhb"]
+
+[node name="PauseOverlay" type="CenterContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_sv870")
+script = ExtResource("2_j8yg3")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+custom_minimum_size = Vector2(1280, 720)
+layout_mode = 2
+color = Color(0, 0, 0, 0.862745)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+custom_minimum_size = Vector2(180, 2.08165e-12)
+layout_mode = 2
+theme_override_constants/separation = 32
+
+[node name="ResumeButton" type="Button" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "返回游戏"
+
+[node name="ReturnButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "返回开始画面"
+
+[node name="ClickAudio" parent="." instance=ExtResource("3_38qhb")]
+
+[connection signal="pressed" from="VBoxContainer/ResumeButton" to="." method="_on_resume_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/ReturnButton" to="." method="_on_return_button_pressed"]

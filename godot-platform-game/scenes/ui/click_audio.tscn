@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://bdfawue1mkm2y"]
+
+[ext_resource type="Script" path="res://scripts/ClickAudio.gd" id="1_lpjh6"]
+[ext_resource type="AudioStream" uid="uid://baawa1dprx312" path="res://assets/audios/click_003.ogg" id="2_5vcy0"]
+
+[node name="ClickAudio" type="Node2D"]
+script = ExtResource("1_lpjh6")
+
+[node name="ClickPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_5vcy0")
+bus = &"Interface"

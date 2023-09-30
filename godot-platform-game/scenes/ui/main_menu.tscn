@@ -1,0 +1,84 @@
+[gd_scene load_steps=14 format=3 uid="uid://ucu0msjua0xl"]
+
+[ext_resource type="Script" path="res://scripts/MainMenu.gd" id="1_fx7el"]
+[ext_resource type="PackedScene" uid="uid://bfaya5bw8td30" path="res://scenes/levels/demo.tscn" id="3_a3suw"]
+[ext_resource type="Theme" uid="uid://dga04c501s0oa" path="res://assets/theme.tres" id="4_co2ek"]
+[ext_resource type="Texture2D" uid="uid://k584i16ekywj" path="res://assets/tileSets/title/title-sprite-00001.png" id="5_yxx7p"]
+[ext_resource type="Texture2D" uid="uid://dkom42csk1txm" path="res://assets/tileSets/title/title-sprite-00002.png" id="6_3gfud"]
+[ext_resource type="AudioStream" uid="uid://d334py4ebheau" path="res://assets/audios/Journey Across the Blue.ogg" id="6_kw87y"]
+[ext_resource type="Texture2D" uid="uid://mapnjofq70nw" path="res://assets/tileSets/title/title-sprite-00003.png" id="7_v7u4f"]
+[ext_resource type="Texture2D" uid="uid://clbydu16pov28" path="res://assets/tileSets/title/title-sprite-00004.png" id="8_pl2kp"]
+[ext_resource type="Texture2D" uid="uid://bm3gijkrnhniy" path="res://assets/tileSets/title/title-sprite-00005.png" id="9_bwaae"]
+[ext_resource type="Texture2D" uid="uid://b3l7a1qs6kuow" path="res://assets/tileSets/title/title-sprite-00006.png" id="10_ae3q3"]
+[ext_resource type="Texture2D" uid="uid://bs76q7q8bptdh" path="res://assets/backgrounds/background_layer_1.png" id="11_q2qab"]
+[ext_resource type="PackedScene" uid="uid://bdfawue1mkm2y" path="res://scenes/ui/click_audio.tscn" id="13_dgf8w"]
+
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_nj1tj"]
+frames = 6
+speed_scale = 4.0
+frame_0/texture = ExtResource("5_yxx7p")
+frame_1/texture = ExtResource("6_3gfud")
+frame_1/duration = 1.0
+frame_2/texture = ExtResource("7_v7u4f")
+frame_2/duration = 1.0
+frame_3/texture = ExtResource("8_pl2kp")
+frame_3/duration = 1.0
+frame_4/texture = ExtResource("9_bwaae")
+frame_4/duration = 1.0
+frame_5/texture = ExtResource("10_ae3q3")
+frame_5/duration = 1.0
+
+[node name="MainMenu" type="Node2D"]
+script = ExtResource("1_fx7el")
+target_scene = ExtResource("3_a3suw")
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="CenterContainer" type="CenterContainer" parent="UI"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("4_co2ek")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/CenterContainer"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="TextureRect" type="TextureRect" parent="UI/CenterContainer/VBoxContainer"]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+texture = SubResource("AnimatedTexture_nj1tj")
+
+[node name="NewGameButton" type="Button" parent="UI/CenterContainer/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(180, 2.08165e-12)
+layout_mode = 2
+text = "开始游戏"
+
+[node name="SettingButton" type="Button" parent="UI/CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "设置
+"
+
+[node name="ExitButton" type="Button" parent="UI/CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "退出"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-119, -147)
+scale = Vector2(2.75312, 2.90556)
+texture = ExtResource("11_q2qab")
+centered = false
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_kw87y")
+autoplay = true
+bus = &"Music"
+
+[node name="ClickAudio" parent="." instance=ExtResource("13_dgf8w")]
+
+[connection signal="pressed" from="UI/CenterContainer/VBoxContainer/NewGameButton" to="." method="_on_new_game_button_pressed"]
+[connection signal="pressed" from="UI/CenterContainer/VBoxContainer/SettingButton" to="." method="_on_setting_button_pressed"]
+[connection signal="pressed" from="UI/CenterContainer/VBoxContainer/ExitButton" to="." method="_on_exit_button_pressed"]

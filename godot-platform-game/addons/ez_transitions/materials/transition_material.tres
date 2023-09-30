@@ -1,0 +1,14 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://d0jcjsq64h2kp"]
+
+[ext_resource type="Shader" path="res://addons/ez_transitions/shaders/transition_shader.gdshader" id="1_0kb0q"]
+
+[resource]
+shader = ExtResource("1_0kb0q")
+shader_parameter/screen_width = 1920.0
+shader_parameter/screen_height = 1080.0
+shader_parameter/center = Vector2(0.5, 0.5)
+shader_parameter/progress = 0.0
+shader_parameter/pixel_size = 15.0
+shader_parameter/circle_size = 1.5
+shader_parameter/curtains = 1.0
+shader_parameter/type = 0

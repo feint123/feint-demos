@@ -1,0 +1,44 @@
+[gd_resource type="Theme" load_steps=5 format=3 uid="uid://dga04c501s0oa"]
+
+[ext_resource type="FontFile" uid="uid://d0ral5r84wx1i" path="res://assets/others/fonts/DottedSongtiSquareRegular.otf" id="1_pecum"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5gktb"]
+bg_color = Color(0.654902, 0.12549, 0.105882, 0.831373)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kctme"]
+content_margin_top = 8.0
+content_margin_bottom = 8.0
+bg_color = Color(0.372549, 0.12549, 0.105882, 0.831373)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fkpd1"]
+content_margin_top = 8.0
+content_margin_bottom = 8.0
+bg_color = Color(0.654902, 0.12549, 0.105882, 0.831373)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+anti_aliasing = false
+anti_aliasing_size = 4.0
+
+[resource]
+Button/font_sizes/font_size = 16
+Button/fonts/font = ExtResource("1_pecum")
+Button/styles/focus = SubResource("StyleBoxFlat_5gktb")
+Button/styles/hover = SubResource("StyleBoxFlat_kctme")
+Button/styles/normal = SubResource("StyleBoxFlat_fkpd1")
+Label/fonts/font = ExtResource("1_pecum")

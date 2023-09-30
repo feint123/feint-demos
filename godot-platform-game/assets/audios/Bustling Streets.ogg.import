@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://ci40kyvps6xb8"
+path="res://.godot/imported/Bustling Streets.ogg-b416ce884b9b26e09e4d389b0d2446f0.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/audios/Bustling Streets.ogg"
+dest_files=["res://.godot/imported/Bustling Streets.ogg-b416ce884b9b26e09e4d389b0d2446f0.oggvorbisstr"]
+
+[params]
+
+loop=true
+loop_offset=0.0
+bpm=0.0
+beat_count=0
+bar_beats=4
