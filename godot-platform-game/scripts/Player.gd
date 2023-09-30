@@ -25,7 +25,7 @@ var dash_animation_time = 0
 
 func _physics_process(delta):
 	platform.apply_gravity(delta)
-	if Input.is_anything_pressed():
+	if Input.is_anything_pressed() and not direction().is_zero_approx():
 		animated_sprite.flip_h = direction() < Vector2.ZERO
 	platform.move()
 

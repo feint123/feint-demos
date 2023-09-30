@@ -1,0 +1,9 @@
+feint: 在这个项目中实现了Platform类游戏的一些最基本的功能\
+包括：\
+动作（移动、跳跃、[wave]冲刺[/wave]、攀墙）、转场、音效、设置、UI、死亡判定等等
+feint: 关于角色操控的代码都在[color=blue]Player.gd[/color]文件中。\
+我简单的写了一些注释，[wave]请勿喷.[/wave]
+feint: 如果你是要使用godot开发像素风格的游戏，最好应用以下两个项目设置：\
+1. 渲染->纹理->默认纹理过滤：Nearest\
+2. 显示->窗口->拉伸->模式：canvas_items
+feint: 项目已经上传到github[br]（[color=blue]https\://github.com/feint123/feint-demos[/color]）[br]感兴趣的小伙伴可以去看看

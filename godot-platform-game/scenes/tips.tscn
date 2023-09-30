@@ -1,0 +1,42 @@
+[gd_scene load_steps=3 format=3 uid="uid://ce7ut6beac2it"]
+
+[sub_resource type="GDScript" id="GDScript_v4rbo"]
+script/source = "extends Area2D
+
+@export var time_line:String
+
+@onready var character: DialogicCharacter = preload(\"res://scripts/dialogic/feint.dch\")
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	pass
+
+
+func _on_area_entered(area):
+	var layout = Dialogic.start(time_line)
+	layout.register_character(character, self)
+
+
+func _on_area_exited(area):
+	Dialogic.end_timeline()
+"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hyscp"]
+
+[node name="Tips" type="Area2D"]
+position = Vector2(243, 244)
+collision_layer = 8
+collision_mask = 12
+script = SubResource("GDScript_v4rbo")
+time_line = "course"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_hyscp")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="area_exited" from="." to="." method="_on_area_exited"]

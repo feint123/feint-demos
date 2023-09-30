@@ -1,6 +1,5 @@
 extends Node2D
 
-@onready var pause_scene = $CanvasLayer/PauseOverlay
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
@@ -10,12 +9,7 @@ func _ready():
 func _process(delta):
 	pass
 
-func _input(event):
-	if event.is_action_pressed("menu") and not pause_scene.visible:
-		get_viewport().set_input_as_handled()
-		get_tree().paused = true
-		pause_scene.resume_focus()
-		pause_scene.visible = true
+
 	
 
 

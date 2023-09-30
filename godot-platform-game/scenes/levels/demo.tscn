@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://bfaya5bw8td30"]
+[gd_scene load_steps=16 format=3 uid="uid://bfaya5bw8td30"]
 
 [ext_resource type="PackedScene" uid="uid://bfdyp1c4blqso" path="res://scenes/player.tscn" id="1_35jbm"]
 [ext_resource type="Script" path="res://scripts/demo.gd" id="1_ug8pc"]
@@ -7,8 +7,8 @@
 [ext_resource type="PackedScene" uid="uid://cosnrh544v3l6" path="res://scenes/levels/next_platform.tscn" id="3_knic4"]
 [ext_resource type="Texture2D" uid="uid://bs76q7q8bptdh" path="res://assets/backgrounds/background_layer_1.png" id="4_7146a"]
 [ext_resource type="PackedScene" uid="uid://dupnmjmrif1jh" path="res://scenes/re_dash.tscn" id="4_hhv4h"]
+[ext_resource type="PackedScene" uid="uid://c7s18why3b43w" path="res://scenes/ui/pause_layer.tscn" id="8_6eg1l"]
 [ext_resource type="AudioStream" uid="uid://ci40kyvps6xb8" path="res://assets/audios/Bustling Streets.ogg" id="12_icvja"]
-[ext_resource type="PackedScene" uid="uid://bn3jouxh7pjbv" path="res://scenes/ui/pause_overlay.tscn" id="14_3qmaj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4stbt"]
 size = Vector2(101, 6.5)
@@ -21,6 +21,32 @@ size = Vector2(87, 6.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kka0a"]
 size = Vector2(121.5, 7.25)
+
+[sub_resource type="GDScript" id="GDScript_kreim"]
+script/source = "extends Area2D
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	pass
+
+
+func _on_area_entered(area):
+	EzTransitions.set_easing(0, 1)
+	EzTransitions.set_trans(2, 2)
+	EzTransitions.set_timers(1, 0, 1)
+	EzTransitions.set_reverse(false, true)
+	EzTransitions.set_textures(\"res://addons/ez_transitions/images/black_texture.png\", \"res://addons/ez_transitions/images/black_texture.png\")
+	EzTransitions.set_types(0, 0)
+	EzTransitions.change_scene(\"res://scenes/levels/play_ground.tscn\")
+"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jnkq0"]
 
 [node name="Demo" type="Node2D"]
 script = ExtResource("1_ug8pc")
@@ -129,13 +155,7 @@ autoplay = true
 mix_target = 1
 bus = &"Music"
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="PauseOverlay" parent="CanvasLayer" instance=ExtResource("14_3qmaj")]
-process_mode = 2
-visible = false
-offset_top = 4.0
-offset_bottom = 4.0
+[node name="PauseLayer" parent="." instance=ExtResource("8_6eg1l")]
 
 [node name="ScreenRespawn" type="Marker2D" parent="."]
 visible = false
@@ -149,4 +169,14 @@ offset_bottom = 284.0
 enabled = false
 initial_node_to_watch = NodePath("../Player")
 
+[node name="NextScene" type="Area2D" parent="."]
+position = Vector2(40, -321)
+collision_layer = 8
+collision_mask = 4
+script = SubResource("GDScript_kreim")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NextScene"]
+shape = SubResource("RectangleShape2D_jnkq0")
+
 [connection signal="player_dead" from="Player" to="." method="_on_player_player_dead"]
+[connection signal="area_entered" from="NextScene" to="NextScene" method="_on_area_entered"]

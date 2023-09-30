@@ -19,7 +19,7 @@
 resource_name = "Music"
 script = ExtResource("6_axkg7")
 bus_name = "Music"
-current = 73.0
+current = 63.0
 default = 80.0
 name = "Music"
 category = "Audio"

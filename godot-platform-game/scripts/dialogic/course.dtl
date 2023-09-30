@@ -1,0 +1,5 @@
+feint (Default): 这个的Demo中使用了2d essentials、ez transitions、godot game setting 以及 godot state charts插件。感谢这些插件，极大的提升了开发效率！
+feint: 2d essentials\: 封装了基本的动作：Jump、Dash、Wall Jump、Wall Slide、Wall Climb等等\
+ez transitions：可视化界面，快捷的设置一些预设好的动画效果
+feint: godot state charts：状态机管理,方便控制不同动作之间的转换\
+godot game setting：提供一些基本的设置选项，可以和UI控件进行绑定
