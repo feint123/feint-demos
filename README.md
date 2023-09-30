@@ -10,4 +10,5 @@
 | TAURI | [dTools](https://github.com/feint123/feint-demos/tree/main/dTools)                   | 使用tauri实现的一个给程序员使用的工具类App，将会逐渐集成各种常用的功能。                         |
 | RUST  | [dynamic-sort](https://github.com/feint123/feint-demos/tree/main/dynamic-sort)       | 一个通用的排序算法可视化的小应用。                                                |
 | RUST  | [game-of-life](https://github.com/feint123/feint-demos/tree/main/game-of-life)       | rust实现的生命游戏。                                                     |
+| GODOT  | [godot-platform-game](https://github.com/feint123/feint-demos/tree/main/godot-platform-game)      | Godot引擎实现的一个平台跳跃游戏Demo                                                     |
 
