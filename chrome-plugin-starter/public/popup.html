@@ -1,0 +1,28 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>My Chrome Extension</title>
+        <link rel="stylesheet" href="popup.css" />
+    </head>
+    <body>
+        <div class="app">
+            <div class="subtitle">🍅番茄钟</div>
+            <div class="button-container">
+              <button id="decrementBtn" class="button">-</button>
+              <div class="counter"  id="timerInput">25</div>
+              <button id="incrementBtn" class="button">+</button>
+            </div>
+
+            <div class="countdown-circle" id="countdownCircle">
+                   <svg viewBox="0 0 42 42" class="circle-svg">
+                       <circle class="circle-background" cx="21" cy="21" r="20" stroke="#eee" stroke-width="2" fill="none"/>
+                       <circle class="circle-progress" cx="21" cy="21" r="20" stroke="#007bff" stroke-width="2" fill="none" stroke-dasharray="125.66" stroke-dashoffset="125.66"/>
+                   </svg>
+                   <div class="circle-text" id="countdownText">00:00</div>
+                   <button class="button timer-btn" id="startTimer">开始</button>
+               </div>
+            <script src="popup.js"></script>
+        </app>
+    </body>
+</html>
