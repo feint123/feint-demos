@@ -1,0 +1,75 @@
+{
+  "manifest_version": 3,
+  "name": "Bilibili Pro",
+  "version": "0.1.0",
+  "description": "My Chrome Extension",
+  "icons": {
+    "16": "icons/icon_16.png",
+    "32": "icons/icon_32.png",
+    "48": "icons/icon_48.png",
+    "128": "icons/icon_128.png"
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_title": "Bilibili Pro",
+    "default_popup": "popup.html"
+  },
+  "permissions": [
+    "storage"
+  ],
+  "content_scripts": [
+    {
+      "matches": [
+        "https://www.bilibili.com/*"
+      ],
+      "exclude_globs": ["https://www.bilibili.com/video/*"],
+      "run_at": "document_idle",
+      "js": [
+        "searchMode.js"
+      ]
+    },
+    {
+      "matches": [
+        "https://www.bilibili.com/video/*"
+      ],
+      "run_at": "document_idle",
+      "js": [
+        "cinemaMode.js"
+      ]
+    },
+    {
+      "matches": [
+        "https://www.bilibili.com/*", "https://search.bilibili.com/*"
+      ],
+      "run_at": "document_idle",
+      "js": [
+        "localCollect.js"
+      ]
+    }
+    ,
+    {
+      "matches": [
+        "https://www.bilibili.com/*", "https://search.bilibili.com/*"
+      ],
+      "run_at": "document_idle",
+      "js": [
+        "keywordFilter.js"
+      ]
+    }
+    ,
+    {
+      "matches": [
+        "<all_urls>"
+      ],
+      "run_at": "document_idle",
+      "js": [
+        "default.js"
+      ]
+    }
+
+
+    
+  ]
+}

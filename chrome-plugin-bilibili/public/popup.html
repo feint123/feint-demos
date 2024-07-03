@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>My Chrome Extension</title>
+  <link rel="stylesheet" href="popup-o.css" />
+  <script src="iosSwitch.js"></script>
+  <script src="accordion.js"></script>
+</head>
+
+<body>
+
+  <div class="app">
+    <p class="group-title bg-pink-200 w-full mb-4 py-4 px-4 rounded-lg shadow-md backdrop-blur-3xl">BiliBili Pro</p>
+    <div class="group-container">
+      <div class="flex flex-row">
+        <div class="w-1/2 border-r border-gray-200 pr-2">
+          <div class="switch-container">
+            <label for="switch1">搜索模式</label>
+            <i-switch id="searchMode"></i-switch>
+          </div>
+        </div>
+        <div class="w-1/2 pl-2">
+          <div class="switch-container">
+            <label for="switch2">沉浸式观影</label>
+            <i-switch id="cinemaMode"></i-switch>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="group-container">
+      <div class="switch-container">
+        <label for="switch2">关键词过滤</label>
+        <i-switch id="keywordFilter"></i-switch>
+      </div>
+      <div class="border border-gray-200 rounded-lg">
+        <f-accordion>
+          <span slot="header">关键词列表</span>
+          <div slot="content">
+            <!-- 折叠面板内容，默认隐藏 -->
+            <div class="px-0">
+              <!--  屏蔽词列表，有三列：类型、屏蔽词、开关 -->
+
+              <div class="flex flex-col">
+                <div class="flex flex-row bg-gray-100 py-2">
+                  <div class="w-1/4">
+                    类型
+                  </div>
+                  <div class="w-1/2">
+                    关键词
+                  </div>
+                  <div class="w-1/4">
+                    操作
+                  </div>
+                </div>
+                <div class="filter-list">
+                  
+                </div>
+
+              </div>
+              <div class="flex flex-row py-2 hidden" id="rowContainer">
+                <div class="w-1/4">
+                  <select id="filter-type">
+                    <option value="title">标题</option>
+                    <option value="up">UP主</option>
+                    <option value="ad">广告</option>
+                    <option value="live">直播</option>
+                  </select>
+                </div>
+                <div class="w-1/2">
+                  <input id="filter-keyword" type="text" placeholder="请输入关键词" />
+                </div>
+                <div class="w-1/4">
+                  <button class="text-blue-500" id="saveFilterButton">保存</button>
+                </div>
+              </div>
+              <!-- 增加新增按钮 -->
+              <div class="flex flex-row justify-end mb-2 mt-4 ">
+                <button id="addRowButton"
+                  class="btn-disabled mx-2 border border-blue-200 text-blue-600 font-semibold py-1 px-4 rounded-full hover:bg-blue-100">
+                  新增
+                </button>
+                <button id="cancelRowButton" disabled
+                  class="btn-disabled mr-4 border border-red-200 text-red-600 font-semibold py-1 px-4 rounded-full hover:bg-red-100">
+                  取消
+                </button>
+              </div>
+
+            </div>
+          </div>
+        </f-accordion>
+      </div>
+
+    </div>
+    <div class="group-container">
+      <div class="switch-container">
+        <label for="switch2">本地收藏夹</label>
+        <i-switch id="localCollect"></i-switch>
+      </div>
+      <div class="border border-gray-200 rounded-lg">
+        <f-accordion>
+          <span slot="header">收藏夹列表</span>
+          <div slot="content">
+            <div class="flex flex-col mb-4 collect-list">
+              
+            </div>
+        </f-accordion>
+      </div>
+    </div>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+<style>
+
+</style>
+
+</html>
