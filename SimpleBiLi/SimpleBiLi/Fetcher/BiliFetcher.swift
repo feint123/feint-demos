@@ -32,20 +32,20 @@ class BiliFetcher: ObservableObject {
     
     
     // 视频详情地址
-    let VIDEO_DETAIL_URL="https://api.bilibili.com/x/web-interface/view?aid="
+    let VIDEO_DETAIL_URL="?aid="
     // 视频流地址
-    let VIDEO_PLAY_URL="https://api.bilibili.com/x/player/playurl?qn=32&fnval=1&"
-    let THIRD_PLAY_URL="https://api.injahow.cn/bparse/?p=1&format=mp4&otype=url&av="
+    let VIDEO_PLAY_URL="?qn=32&fnval=1&"
+    let THIRD_PLAY_URL="?p=1&format=mp4&otype=url&av="
     // 分区视频列表地址
-    let VIDEO_DYNAMIC_URL="https://api.bilibili.com/x/web-interface/dynamic/region?"
+    let VIDEO_DYNAMIC_URL="?"
     // 热门视频列表地址
-    let VIDEO_HOT_URL="https://api.bilibili.com/x/web-interface/popular?"
+    let VIDEO_HOT_URL="?"
     // 相关视频推荐
-    let VIDEO_REC_URL = "https://api.bilibili.com/x/web-interface/archive/related?aid="
+    let VIDEO_REC_URL = "?aid="
     // 视频排行
-    let VIDEO_RANK_URL = "https://api.bilibili.com/x/web-interface/ranking/v2"
+    let VIDEO_RANK_URL = ""
     // 搜索推荐
-    let SEARCH_SUGGEST_URL = "https://s.search.bilibili.com/main/suggest?term="
+    let SEARCH_SUGGEST_URL = "?term="
     // 搜索结果
-    let SEARCH_URL = "https://api.bilibili.com/x/web-interface/search/type?search_type=video&"
+    let SEARCH_URL = "?search_type=video&"
 }
