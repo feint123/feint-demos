@@ -1,6 +1,7 @@
 
 import { getItem } from "./storage";
 
+
 let interval
 let filters = []
 function normalFilter(card) {
@@ -38,21 +39,21 @@ function filterNode(node, title, up) {
         if (filter.type == 'title') {
             if (title.includes(filter.keyword)) {
                 console.log(title)
-                node.style.display = 'none';
+                node.remove();
             }
         } else if (filter.type == 'up') {
             if (up === filter.keyword) {
                 console.log(up)
-                node.style.display = 'none';
+                node.remove();
             }
         } else if (filter.type == 'ad') {
             const adSvg = node.querySelector('.bili-video-card__info--ad');
             if (adSvg) {
-                node.style.display = 'none';
+                node.remove();
             }
         } else if (filter.type == 'live') {
             if (node.classList.contains("bili-live-card") || node.querySelector(".living")) {
-                node.style.display = 'none'
+                node.remove();
             }
         }
     })
@@ -71,6 +72,15 @@ function floatNormalFilter(floatCard) {
     filterNode(floatCard, title, up)
 }
 function filterCards() {
+
+    const feedCard = document.querySelectorAll('.feed-card:not(.keyword-filter');
+    if (feedCard && feedCard.length > 0) {
+        feedCard.forEach(card => {
+            card.classList.add('keyword-filter');
+            normalFilter(card)
+        });
+    }
+
     const cards = document.querySelectorAll('.bili-video-card:not(.keyword-filter');
     if (cards && cards.length > 0) {
         cards.forEach(card => {
