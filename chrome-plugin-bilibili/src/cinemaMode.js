@@ -52,12 +52,14 @@ function toggleCinemaMode(enabled) {
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
   if (request.type === 'CINEMA_MODE') {
     if (request.payload && request.payload.cinemaMode) {
-
       toggleCinemaMode(true)
-
     } else {
       toggleCinemaMode(false)
     }
+    sendResponse({});
+    return true;
+  } else if (request.type === 'AUTO_PLAY') {
+    localStorage.setItem("recommend_auto_play", request.payload.autoPlay ? "open" : "close")
     sendResponse({});
     return true;
   }
@@ -65,6 +67,8 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
 });
 
 getItem("switches").then(result => {
+  localStorage.setItem("recommend_auto_play", result.autoPlay ? "open" : "close")
+
   setTimeout(() => {
     toggleCinemaMode(result.cinemaMode)
   }, 1000)

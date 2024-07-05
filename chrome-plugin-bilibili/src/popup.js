@@ -4,7 +4,8 @@ import './popup.css';
 import { setItem, getItem } from './storage';
 
 (function () {
-  const filterList = []
+
+
 
   function loadCollectList() {
     let collectList = document.querySelector('.collect-list')
@@ -180,14 +181,16 @@ import { setItem, getItem } from './storage';
     },
   };
 
+  let defaultSwitchConfig = { searchMode: false, cinemaMode: false, keywordFilter: false, localCollect: true, autoPlay: false }
   /**
    * 恢复控制面板的数据
    */
   function restoreSwitches() {
+    beforeRestorSwitches()
     switchStorage.get(switches => {
       if (typeof switches === 'undefined' || switches == '' || switches == null) {
         // Set counter value as 0
-        switchStorage.set({ searchMode: false, cinemaMode: false }, () => {
+        switchStorage.set(defaultSwitchConfig, () => {
           setupSwitch();
         });
       } else {
@@ -198,17 +201,23 @@ import { setItem, getItem } from './storage';
     loadFilterList()
   }
 
+  function beforeRestorSwitches() {
+    // 设定默认值
+    defaultSwitchConfig.autoPlay = localStorage.getItem("recommend_auto_play") === "open" ? true : false
+  }
+
   document.addEventListener('DOMContentLoaded', restoreSwitches);
 
   /**
    * 
    * @param {*} initialState 
    */
-  function setupSwitch(initialState = { searchMode: false, cinemaMode: false, keywordFilter: false, localCollect: true }) {
+  function setupSwitch(initialState = defaultSwitchConfig) {
     setupSwitchElement({ type: "SEARCH_MODE", elementId: "searchMode", switches: initialState })
     setupSwitchElement({ type: "CINEMA_MODE", elementId: "cinemaMode", switches: initialState })
     setupSwitchElement({ type: "LOCAL_COLLECT", elementId: "localCollect", switches: initialState })
     setupSwitchElement({ type: "KEYWORD_FILTER", elementId: "keywordFilter", switches: initialState })
+    setupSwitchElement({ type: "AUTO_PLAY", elementId: "autoPlay", switches: initialState })
   }
 
   function setupSwitchElement({ type, elementId, switches }) {
@@ -222,7 +231,6 @@ import { setItem, getItem } from './storage';
             switchValue: swithes,
             type: type,
           });
-
         })
       });
     }
@@ -231,6 +239,7 @@ import { setItem, getItem } from './storage';
 
   function updateSwitch({ switchValue, type }) {
     switchStorage.set(switchValue, () => {
+      // 只对当前活动的页面生效
       chrome.tabs.query({ active: true, currentWindow: true }, tabs => {
         const tab = tabs[0];
         chrome.tabs.sendMessage(
@@ -246,4 +255,6 @@ import { setItem, getItem } from './storage';
       });
     });
   }
+
+
 })();
