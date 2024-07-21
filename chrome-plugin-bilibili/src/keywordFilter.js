@@ -152,7 +152,7 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
         toogleKeywordFilter(true)
         sendResponse({});
         return true;
-    }
+    } else if (request.type === 'FILTER_VOTE') {}
 });
 
 getItem("switches").then(result => {

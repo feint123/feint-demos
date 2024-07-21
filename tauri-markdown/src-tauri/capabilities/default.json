@@ -1,0 +1,34 @@
+{
+  "$schema": "../gen/schemas/desktop-schema.json",
+  "identifier": "default",
+  "description": "Capability for the main window",
+  "windows": [
+    "main",
+    "settings"
+  ],
+  "permissions": [
+    "path:default",
+    "event:default",
+    "window:default",
+    "app:default",
+    "image:default",
+    "resources:default",
+    "menu:default",
+    "tray:default",
+    "shell:allow-open",
+    "window:allow-show",
+    "window:allow-create",
+    "fs:default",
+    "fs:allow-open",
+    "dialog:default",
+    "dialog:allow-open",
+    "window:allow-start-dragging",
+    "webview:allow-internal-toggle-devtools",
+    "log:default",
+    "shell:default",
+    "fs:allow-appdata-write",
+    "fs:allow-create",
+    "updater:default",
+    "upload:default"
+  ]
+}

@@ -1,0 +1,31 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+body {
+    -moz-user-select: none;
+    -o-user-select:none;
+    -khtml-user-select:none;
+    -webkit-user-select:none;
+    -ms-user-select:none;
+    user-select:none;
+    cursor: default;
+}
+
+.markdown-body ul{
+   @apply list-disc; 
+}
+
+.markdown-body ol{
+    @apply list-decimal; 
+ }
+
+.markdown-body img {
+    @apply rounded-lg;
+}
+
+.editor .markdown-body {
+    @apply bg-background;
+}
+
