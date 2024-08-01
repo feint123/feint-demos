@@ -1,19 +1,24 @@
-'use strict';
+"use strict";
 
-import './popup.css';
-import { setItem, getItem } from './storage';
+import "./popup.css";
+import { setItem, getItem } from "./storage";
 
 (function () {
-
-
-
   function loadCollectList() {
-    let collectList = document.querySelector('.collect-list')
-    getItem('localCollect').then(list => {
+    let collectList = document.querySelector(".collect-list");
+    getItem("localCollect").then((list) => {
       if (list && list instanceof Array && list.length > 0) {
-        list.forEach(item => {
-          const div = document.createElement('div')
-          div.classList.add("flex", "flex-row", "bg-slate-50", "last:border-none", "border-b", "border-gray-200", "justify-start")
+        list.forEach((item) => {
+          const div = document.createElement("div");
+          div.classList.add(
+            "flex",
+            "flex-row",
+            "bg-slate-50",
+            "last:border-none",
+            "border-b",
+            "border-gray-200",
+            "justify-start",
+          );
 
           // div.onclick = () => {
           //   window.open(item.videoUrl)
@@ -31,101 +36,107 @@ import { setItem, getItem } from './storage';
             <!-- 这里可以添加更多内容 -->
           </div>
 
-          `
-          const removeBtn = document.createElement('button')
-          removeBtn.classList.add('text-red-500', 'text-xl', 'mr-4')
-          removeBtn.innerHTML = "⊗"
+          `;
+          const removeBtn = document.createElement("button");
+          removeBtn.classList.add("text-red-500", "text-xl", "mr-4");
+          removeBtn.innerHTML = "⊗";
           removeBtn.onclick = () => {
-            console.log("click remove button")
-            const index = list.indexOf(item)
-            list.splice(index, 1)
-            setItem('localCollect', list)
-            div.remove()
-          }
-          div.appendChild(removeBtn)
-          collectList.appendChild(div)
-        })
+            console.log("click remove button");
+            const index = list.indexOf(item);
+            list.splice(index, 1);
+            setItem("localCollect", list);
+            div.remove();
+          };
+          div.appendChild(removeBtn);
+          collectList.appendChild(div);
+        });
       }
-    })
+    });
   }
 
-  document.getElementById('addRowButton').addEventListener('click', function () {
-    // 创建新的行元素
-    document.getElementById('rowContainer').classList.remove('hidden');
-    document.getElementById('cancelRowButton').disabled = false;
-    document.getElementById('addRowButton').disabled = true;
-  });
+  document
+    .getElementById("addRowButton")
+    .addEventListener("click", function () {
+      // 创建新的行元素
+      document.getElementById("rowContainer").classList.remove("hidden");
+      document.getElementById("cancelRowButton").disabled = false;
+      document.getElementById("addRowButton").disabled = true;
+    });
 
-  document.getElementById('cancelRowButton').addEventListener('click', function () {
-    // 创建新的行元素
-    document.getElementById('rowContainer').classList.add('hidden');
-    document.getElementById('cancelRowButton').disabled = true;
-    document.getElementById('addRowButton').disabled = false;
-  });
+  document
+    .getElementById("cancelRowButton")
+    .addEventListener("click", function () {
+      // 创建新的行元素
+      document.getElementById("rowContainer").classList.add("hidden");
+      document.getElementById("cancelRowButton").disabled = true;
+      document.getElementById("addRowButton").disabled = false;
+    });
 
-  document.getElementById('saveFilterButton').addEventListener('click', function () {
-    // 创建新的行元素
-    const type = document.querySelector("#filter-type").value
-    const keyword = document.querySelector("#filter-keyword").value
-    const id = new Date().getTime();
-    const div = getFilterItemDiv(type, keyword, id)
+  document
+    .getElementById("saveFilterButton")
+    .addEventListener("click", function () {
+      // 创建新的行元素
+      const type = document.querySelector("#filter-type").value;
+      const keyword = document.querySelector("#filter-keyword").value;
+      const id = new Date().getTime();
+      const div = getFilterItemDiv(type, keyword, id);
 
-    getItem('keywordFilter').then(result => {
-      if (!result || !result instanceof Array) {
-        result = []
-      }
-      result.push({
-        id: id,
-        type: type,
-        keyword: keyword
-      })
-      setItem('keywordFilter', result)
-    })
-    document.querySelector('.filter-list').appendChild(div)
-    updateFilterMessage()
-  });
+      getItem("keywordFilter").then((result) => {
+        if (!result || (!result) instanceof Array) {
+          result = [];
+        }
+        result.push({
+          id: id,
+          type: type,
+          keyword: keyword,
+        });
+        setItem("keywordFilter", result);
+      });
+      document.querySelector(".filter-list").appendChild(div);
+      updateFilterMessage();
+    });
 
   /**
    * 加载关键词列表
    */
   function loadFilterList() {
-    getItem('keywordFilter').then(result => {
-      console.log(result)
+    getItem("keywordFilter").then((result) => {
+      console.log(result);
       if (result && result instanceof Array && result.length > 0) {
-        const filterList = document.querySelector('.filter-list')
-        result.forEach(item => {
-          const div = getFilterItemDiv(item.type, item.keyword, item.id)
-          filterList.appendChild(div)
-        })
+        const filterList = document.querySelector(".filter-list");
+        result.forEach((item) => {
+          const div = getFilterItemDiv(item.type, item.keyword, item.id);
+          filterList.appendChild(div);
+        });
       }
-    })
+    });
   }
 
   function updateFilterMessage() {
-    chrome.tabs.query({ active: true, currentWindow: true }, tabs => {
+    chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
       const tab = tabs[0];
       chrome.tabs.sendMessage(
         tab.id,
         {
-          type: "UPDATE_KEYWORD"
+          type: "UPDATE_KEYWORD",
         },
-        response => {
-          console.log('hello world');
-        }
+        (response) => {
+          console.log("hello world");
+        },
       );
     });
   }
   /**
-   * 
-   * @param {String} type 
-   * @param {String} keyword 
-   * @param {String} id 
-   * @returns {Node} 
+   *
+   * @param {String} type
+   * @param {String} keyword
+   * @param {String} id
+   * @returns {Node}
    */
 
   function getFilterItemDiv(type, keyword, id) {
-    const div = document.createElement('div')
-    div.classList.add("flex", "flex-row", "py-2")
+    const div = document.createElement("div");
+    div.classList.add("flex", "flex-row", "py-2");
     div.innerHTML = `
     <div class="w-1/4">
     ${getTypeName(type)}
@@ -136,59 +147,68 @@ import { setItem, getItem } from './storage';
     <div class="w-1/4">
       <button class="text-red-500">移除</button>
     </div>
-    `
-    const button = div.querySelector('button')
+    `;
+    const button = div.querySelector("button");
     button.onclick = () => {
-      div.remove()
-      getItem('keywordFilter').then(result => {
+      div.remove();
+      getItem("keywordFilter").then((result) => {
         if (result && result instanceof Array) {
-          result = result.filter(item => item.id !== id)
-          setItem('keywordFilter', result)
+          result = result.filter((item) => item.id !== id);
+          setItem("keywordFilter", result);
         }
-      })
-      updateFilterMessage()
-    }
-    return div
+      });
+      updateFilterMessage();
+    };
+    return div;
   }
 
   function getTypeName(type) {
     switch (type) {
-      case 'title':
-        return '标题'
-      case 'up':
-        return 'up主'
-      case 'ad':
-        return '广告'
-      case 'live':
-        return '直播'
+      case "title":
+        return "标题";
+      case "up":
+        return "up主";
+      case "ad":
+        return "广告";
+      case "live":
+        return "直播";
     }
   }
   /**
    * 存储开关
    */
   const switchStorage = {
-    get: cb => {
-      getItem('switches').then(result => {
+    get: (cb) => {
+      getItem("switches").then((result) => {
         cb(result);
       });
     },
     set: (value, cb) => {
-      setItem('switches', value).then(
-        () => {
-          cb();
-        }
-      );
+      setItem("switches", value).then(() => {
+        cb();
+      });
     },
   };
 
-  let defaultSwitchConfig = { searchMode: false, cinemaMode: false, keywordFilter: false, localCollect: true, autoPlay: false }
+  let defaultSwitchConfig = {
+    searchMode: false,
+    cinemaMode: false,
+    keywordFilter: false,
+    localCollect: true,
+    autoPlay: false,
+    noteMode: false,
+  };
   /**
    * 恢复控制面板的数据
    */
   function restoreSwitches() {
-    beforeRestorSwitches()
-    switchStorage.get(switches => {
-      if (typeof switches === 'undefined' || switches == '' || switches == null) {
+    beforeRestorSwitches();
+    switchStorage.get((switches) => {
+      if (
+        typeof switches === "undefined" ||
+        switches == "" ||
+        switches == null
+      ) {
         // Set counter value as 0
         switchStorage.set(defaultSwitchConfig, () => {
           setupSwitch();
@@ -196,51 +216,76 @@ import { setItem, getItem } from './storage';
       } else {
         setupSwitch(switches);
       }
-    })
-    loadCollectList()
-    loadFilterList()
+    });
+    loadCollectList();
+    loadFilterList();
   }
 
   function beforeRestorSwitches() {
     // 设定默认值
-    defaultSwitchConfig.autoPlay = localStorage.getItem("recommend_auto_play") === "open" ? true : false
+    defaultSwitchConfig.autoPlay =
+      localStorage.getItem("recommend_auto_play") === "open" ? true : false;
   }
 
-  document.addEventListener('DOMContentLoaded', restoreSwitches);
+  document.addEventListener("DOMContentLoaded", restoreSwitches);
 
   /**
-   * 
-   * @param {*} initialState 
+   *
+   * @param {*} initialState
    */
   function setupSwitch(initialState = defaultSwitchConfig) {
-    setupSwitchElement({ type: "SEARCH_MODE", elementId: "searchMode", switches: initialState })
-    setupSwitchElement({ type: "CINEMA_MODE", elementId: "cinemaMode", switches: initialState })
-    setupSwitchElement({ type: "LOCAL_COLLECT", elementId: "localCollect", switches: initialState })
-    setupSwitchElement({ type: "KEYWORD_FILTER", elementId: "keywordFilter", switches: initialState })
-    setupSwitchElement({ type: "AUTO_PLAY", elementId: "autoPlay", switches: initialState })
+    setupSwitchElement({
+      type: "SEARCH_MODE",
+      elementId: "searchMode",
+      switches: initialState,
+    });
+    setupSwitchElement({
+      type: "CINEMA_MODE",
+      elementId: "cinemaMode",
+      switches: initialState,
+    });
+    setupSwitchElement({
+      type: "LOCAL_COLLECT",
+      elementId: "localCollect",
+      switches: initialState,
+    });
+    setupSwitchElement({
+      type: "KEYWORD_FILTER",
+      elementId: "keywordFilter",
+      switches: initialState,
+    });
+    setupSwitchElement({
+      type: "AUTO_PLAY",
+      elementId: "autoPlay",
+      switches: initialState,
+    });
+    setupSwitchElement({
+      type: "NOTE_MODE",
+      elementId: "noteMode",
+      switches: initialState,
+    });
   }
 
   function setupSwitchElement({ type, elementId, switches }) {
     const switchElement = document.getElementById(elementId);
     if (switchElement) {
       switchElement.checked = switches[elementId];
-      switchElement.addEventListener('change', () => {
-        switchStorage.get(swithes => {
+      switchElement.addEventListener("change", () => {
+        switchStorage.get((swithes) => {
           swithes[elementId] = switchElement.checked;
           updateSwitch({
             switchValue: swithes,
             type: type,
           });
-        })
+        });
       });
     }
   }
 
-
   function updateSwitch({ switchValue, type }) {
     switchStorage.set(switchValue, () => {
       // 只对当前活动的页面生效
-      chrome.tabs.query({ active: true, currentWindow: true }, tabs => {
+      chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
         const tab = tabs[0];
         chrome.tabs.sendMessage(
           tab.id,
@@ -248,13 +293,11 @@ import { setItem, getItem } from './storage';
             type: type,
             payload: switchValue,
           },
-          response => {
-            console.log('Current count value passed to contentScript file');
-          }
+          (response) => {
+            console.log("Current count value passed to contentScript file");
+          },
         );
       });
     });
   }
-
-
 })();
