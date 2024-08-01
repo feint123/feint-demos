@@ -81,32 +81,51 @@ function openNoteMode(inteval) {
   // 自动打开笔记面板
   const note = document.querySelector(".video-note-inner");
   let qlEditor;
+  // 查看他人笔记时，使用“note-detail” 来进行滚动；
+  let noteDetail;
   let autoScroll = true;
+  let lastCid;
+  let isCidChanged = false;
   if (note) {
     note.click();
     clearInterval(inteval);
     // 获取笔记内容
     setInterval(() => {
+      let activeCid = null;
+      const activeEle = document.querySelector(
+        ".bpx-player-ctrl-eplist-menu-item.bpx-state-active",
+      );
+      if (activeEle) {
+        activeCid = activeEle.getAttribute("data-cid");
+        if (lastCid != activeCid) {
+          isCidChanged = true;
+          lastCid = activeCid;
+        }
+      }
       let tagBlotList = document.querySelectorAll(".ql-tag-blot");
       const currentSecond = getPlayedSecond();
       let minDisSecond = 1000000;
       let targetTagElem = tagBlotList[0];
       tagBlotList.forEach((element) => {
         const secondStr = element.getAttribute("data-seconds");
+        const tagCid = element.getAttribute("data-cid");
         if (secondStr) {
-          const tagSeconde = Number.parseInt(secondStr);
-          // 获取距离播放时间点最近的时间标记
-          const currentDis = Math.abs(tagSeconde - currentSecond);
-          if (currentDis < minDisSecond) {
-            minDisSecond = currentDis;
-            targetTagElem = element;
+          // 适配分区视频
+          if ((activeCid && activeCid == tagCid) || !activeCid) {
+            const tagSeconde = Number.parseInt(secondStr);
+            // 获取距离播放时间点最近的时间标记
+            const currentDis = Math.abs(tagSeconde - currentSecond);
+            if (currentDis < minDisSecond) {
+              minDisSecond = currentDis;
+              targetTagElem = element;
+            }
           }
         }
       });
-      if (targetTagElem) {
-        const offsetTop = targetTagElem.offsetTop;
-        if (!qlEditor) {
-          qlEditor = document.querySelector(".ql-editor");
+
+      if (!qlEditor || isCidChanged) {
+        qlEditor = document.querySelector(".ql-editor");
+        if (qlEditor) {
           qlEditor.addEventListener("blur", (ev) => {
             autoScroll = true;
           });
@@ -114,8 +133,21 @@ function openNoteMode(inteval) {
             autoScroll = false;
           });
         }
+      }
+      if (!noteDetail || isCidChanged) {
+        noteDetail = document.querySelector(".note-detail");
+      }
+      isCidChanged = false;
+
+      if (targetTagElem) {
+        // bpx-state-active
+        const offsetTop = targetTagElem.offsetTop;
         if (autoScroll) {
-          qlEditor.scrollTo({ top: offsetTop, behavior: "smooth" });
+          if (noteDetail) {
+            noteDetail.scrollTo({ top: offsetTop, behavior: "smooth" });
+          } else {
+            qlEditor.scrollTo({ top: offsetTop, behavior: "smooth" });
+          }
         }
       }
     }, 1000);
