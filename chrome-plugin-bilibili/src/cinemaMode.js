@@ -80,27 +80,39 @@ function openNoteMode(inteval) {
   console.log("openNodeMode");
   // 自动打开笔记面板
   const note = document.querySelector(".video-note-inner");
-  let qlEditor;
-  // 查看他人笔记时，使用“note-detail” 来进行滚动；
-  let noteDetail;
-  let autoScroll = true;
+
   let lastCid;
-  let isCidChanged = false;
   if (note) {
     note.click();
     clearInterval(inteval);
-    // 获取笔记内容
-    setInterval(() => {
+    const indicatorDiv = document.createElement("div");
+    indicatorDiv.innerHTML = `
+
+      <div class="svg-icon print" data-v-7a68f144="" style="width: 22px; height: 22px;">
+      <svg xmlns:xlink="http://www.w3.org/1999/xlink" width="800px" height="800px" viewBox="0 0 32 32" xml:space="preserve">
+      <style type="text/css">
+	.duotone_twee{fill:#555D5E;}
+	.duotone_een{fill:#0B1719;}
+      </style>
+      <g>
+	<path class="duotone_een" d="M23.078,17.263C23.26,17.596,23.017,18,22.637,18H9.361c-0.351,0-0.589-0.356-0.469-0.686
+		c0.503-1.381,1.493-2.479,2.91-2.741c0.212-0.039,0.371-0.206,0.402-0.419L12.94,9h6.219c0.286,2.005,0.122,0.854,0.749,5.246
+		c0.025,0.178,0.151,0.322,0.317,0.388C21.48,15.134,22.449,16.109,23.078,17.263z M9.928,7.695L11.15,8h9.8l1.221-0.305
+		c0.223-0.056,0.379-0.256,0.379-0.485V5.5c0-0.276-0.224-0.5-0.5-0.5h-12c-0.276,0-0.5,0.224-0.5,0.5v1.71
+		C9.549,7.439,9.706,7.639,9.928,7.695z"></path>
+	<path class="duotone_twee" d="M15,19v8c0,1.323,2,1.325,2,0v-8H15z"></path>
+      </g>
+      </svg>
+      </div>
+      `;
+    indicatorDiv.classList.add("close-note");
+    indicatorDiv.addEventListener("click", () => {
       let activeCid = null;
       const activeEle = document.querySelector(
         ".bpx-player-ctrl-eplist-menu-item.bpx-state-active",
       );
       if (activeEle) {
         activeCid = activeEle.getAttribute("data-cid");
-        if (lastCid != activeCid) {
-          isCidChanged = true;
-          lastCid = activeCid;
-        }
       }
       let tagBlotList = document.querySelectorAll(".ql-tag-blot");
       const currentSecond = getPlayedSecond();
@@ -123,34 +135,23 @@ function openNoteMode(inteval) {
         }
       });
 
-      if (!qlEditor || isCidChanged) {
-        qlEditor = document.querySelector(".ql-editor");
-        if (qlEditor) {
-          qlEditor.addEventListener("blur", (ev) => {
-            autoScroll = true;
-          });
-          qlEditor.addEventListener("focus", (ev) => {
-            autoScroll = false;
-          });
-        }
-      }
-      if (!noteDetail || isCidChanged) {
-        noteDetail = document.querySelector(".note-detail");
-      }
-      isCidChanged = false;
+      const qlEditor = document.querySelector(".ql-editor");
+      // 查看他人笔记时，使用“note-detail” 来进行滚动；
+      const noteDetail = document.querySelector(".note-detail");
 
       if (targetTagElem) {
         // bpx-state-active
         const offsetTop = targetTagElem.offsetTop;
-        if (autoScroll) {
-          if (noteDetail) {
-            noteDetail.scrollTo({ top: offsetTop, behavior: "smooth" });
-          } else {
-            qlEditor.scrollTo({ top: offsetTop, behavior: "smooth" });
-          }
+
+        if (noteDetail) {
+          noteDetail.scrollTo({ top: offsetTop, behavior: "smooth" });
+        } else {
+          qlEditor.scrollTo({ top: offsetTop, behavior: "smooth" });
         }
       }
-    }, 1000);
+    });
+    const noteHeader = document.querySelector(".note-header");
+    noteHeader.appendChild(indicatorDiv);
   }
 }
 
