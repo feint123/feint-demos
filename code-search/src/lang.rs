@@ -25,20 +25,23 @@ impl SymbolQuery for CSharpQuery {
         return vec![
             String::from(
                 r#"
-            (struct_declaration
+            ((struct_declaration
              name:(identifier) @struct)
+             (#match? @struct ":?"))
             "#,
             ),
             String::from(
                 r#"
-            (class_declaration
+            ((class_declaration
              name:(identifier) @class)
+             (#match? @class ":?"))
             "#,
             ),
             String::from(
                 r#"
-            (method_declaration
+            ((method_declaration
              name:(identifier) @method)
+             (#match? @method ":?"))
             "#,
             ),
         ];
@@ -54,14 +57,16 @@ impl SymbolQuery for GoQuery {
         return vec![
             String::from(
                 r#"
-            (function_declaration
+            ((function_declaration
              name:(identifier) @function)
+             (#match? @function ":?"))
             "#,
             ),
             String::from(
                 r#"
-            (type_spec
+            ((type_spec
              name:(type_identifier) @type)
+             (#match? @type ":?"))
             "#,
             ),
         ];
@@ -76,8 +81,9 @@ impl SymbolQuery for JavascriptQuery {
     fn get_queries(&self) -> Vec<String> {
         return vec![String::from(
             r#"
-            (function_declaration
+            ((function_declaration
              name:(identifier) @function)
+             (#match? @function ":?"))
             "#,
         )];
     }
@@ -92,24 +98,27 @@ impl SymbolQuery for CppQuery {
         return vec![
             String::from(
                 r#"
-            (function_definition
+            ((function_definition
                 declarator:(
                     function_declarator
                         declarator:(identifier) @function
                 )
             )
+            (#match? @function ":?"))
             "#,
             ),
             String::from(
                 r#"
-                (struct_specifier
+                ((struct_specifier
                     name:(type_identifier) @struct)
+                    (#match? @struct ":?"))
                 "#,
             ),
             String::from(
                 r#"
-                (class_specifier
-                    name:(type_identifier) @struct)
+                ((class_specifier
+                    name:(type_identifier) @class)
+                    (#match? @class ":?"))
                 "#,
             ),
         ];
@@ -125,18 +134,20 @@ impl SymbolQuery for CQuery {
         return vec![
             String::from(
                 r#"
-            (function_definition
+            ((function_definition
                 declarator:(
                     function_declarator
                         declarator:(identifier) @function
                 )
             )
+            (#match? @function ":?"))
             "#,
             ),
             String::from(
                 r#"
-                (struct_specifier
+                ((struct_specifier
                     name:(type_identifier) @struct)
+                    (#match? @struct ":?"))
                 "#,
             ),
         ];
@@ -152,14 +163,16 @@ impl SymbolQuery for PythonQuery {
         return vec![
             String::from(
                 r#"
-            (function_definition
+            ((function_definition
              name:(identifier) @function)
+             (#match? @function ":?"))
             "#,
             ),
             String::from(
                 r#"
-                (class_definition
+                ((class_definition
                     name:(identifier) @class)
+                    (#match? @class ":?"))
                 "#,
             ),
         ];
@@ -175,14 +188,16 @@ impl SymbolQuery for RustQuery {
         return vec![
             String::from(
                 r#"
-            (function_item
+            ((function_item
              name:(identifier) @function)
+             (#match? @function ":?"))
             "#,
             ),
             String::from(
                 r#"
-                (struct_item
+                ((struct_item
                     name:(type_identifier) @struct)
+                    (#match? @struct ":?"))
                 "#,
             ),
         ];
@@ -198,20 +213,23 @@ impl SymbolQuery for JavaQuery {
         return vec![
             String::from(
                 r#"
-            (method_declaration
+            ((method_declaration
              name:(identifier) @method)
+             (#match? @method ":?"))
             "#,
             ),
             String::from(
                 r#"
-                (class_declaration
+                ((class_declaration
                     name:(identifier) @class)
+                    (#match? @class ":?"))
                 "#,
             ),
             String::from(
                 r#"
-                (interface_declaration
-                    name:(identifier) @class)
+                ((interface_declaration
+                    name:(identifier) @interface)
+                    (#match? @interface ":?"))
                 "#,
             ),
         ];

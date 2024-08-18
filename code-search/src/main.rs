@@ -93,11 +93,8 @@ fn main() {
             if args.only_symbol {
                 let code = fs::read_to_string(Path::new(path_str)).unwrap_or("".to_string());
                 if code.contains(args.search_key) {
-                    result = get_all_symbols(&code, get_symbol_query(path_extension));
-                    result = result
-                        .into_iter()
-                        .filter(|item| item.1.contains(args.search_key))
-                        .collect();
+                    result =
+                        get_all_symbols(&code, args.search_key, get_symbol_query(path_extension));
                 }
             } else {
                 result = find_text_in_file(path_str, args.search_key).expect(
@@ -176,7 +173,11 @@ fn get_symbol_query(extention: &str) -> Box<dyn SymbolQuery> {
 *
 *
 */
-fn get_all_symbols(code: &String, symbol_query: Box<dyn SymbolQuery>) -> Vec<(usize, String)> {
+fn get_all_symbols(
+    code: &String,
+    search_key: &str,
+    symbol_query: Box<dyn SymbolQuery>,
+) -> Vec<(usize, String)> {
     let mut parser = Parser::new();
     parser
         .set_language(&symbol_query.get_lang())
@@ -186,7 +187,11 @@ fn get_all_symbols(code: &String, symbol_query: Box<dyn SymbolQuery>) -> Vec<(us
     let mut query_cursor = QueryCursor::new();
     let mut filed_vec = vec![];
     for sq in symbol_query.get_queries() {
-        let query = Query::new(&symbol_query.get_lang(), sq.as_str()).unwrap();
+        let query = Query::new(
+            &symbol_query.get_lang(),
+            sq.replace(":?", search_key).as_str(),
+        )
+        .unwrap();
         let captures = query_cursor.captures(&query, tree.root_node(), code.as_bytes());
         for (m, capture_index) in captures {
             let capture = m.captures[capture_index];
