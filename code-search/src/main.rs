@@ -129,7 +129,8 @@ fn main() {
 }
 fn valid_language_file(extention: &str) -> bool {
     let valid_extensions = vec![
-        "rs", "js", "ts", "java", "py", "go", "c", "cpp", "md", "txt", "html", "css",
+        "rs", "js", "ts", "java", "py", "go", "c", "cpp", "md", "txt", "html", "css", "cs", "kt",
+        "swift", "php", "rb", "sh", "sql", "vb", "lua", "hs", "scala", "erl", "m", "r", "h", "hpp",
     ];
     return valid_extensions.contains(&extention);
 }
