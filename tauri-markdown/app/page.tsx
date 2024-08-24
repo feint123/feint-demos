@@ -16,15 +16,16 @@ import { Editable, RenderElementProps, RenderLeafProps, Slate, useSlateStatic, w
 import { BlockQuoteElement, BulletedListElement, CustomEditor, CustomElement, DividerElement, ImageElement, LinkElement, ParagraphElement, SortedListElement, TaskListElement } from "@/types";
 import "github-markdown-css"
 import { Button, Code, Divider, DropdownItem, Link, Popover, PopoverContent, PopoverTrigger, ScrollShadow } from "@nextui-org/react";
-import { HoveringToolbar, toggleMark } from "@/components/hovering-toolbar";
+import { HoveringToolbar } from "@/components/hovering-toolbar";
 import { open } from "@tauri-apps/plugin-shell";
 import './style.css'
 import { VscAdd, VscFileMedia } from "react-icons/vsc";
 import { CheckListItemElement } from "@/components/check-list-item";
 import { Menu, MenuItem, PredefinedMenuItem } from "@tauri-apps/api/menu";
-import { text } from "stream/consumers";
+import { toggleMark, wrapLink } from "@/utils/slate-utils";
 
-const SHORTCUTS = {
+
+const SHORTCUTS: Map<String, ShortcutsType> = new Map(Object.entries({
   '*': 'list-item',
   '--': 'divider',
   '- [ ]': 'task-list-item',
@@ -36,8 +37,10 @@ const SHORTCUTS = {
   '####': 'heading-four',
   '#####': 'heading-five',
   '######': 'heading-six',
-};
-
+}))
+type ShortcutsType = "bulleted-list" | "sorted-list" | "task-list" | "paragraph" | "block-quote" | "block-quote-item" | "list-item" | "sorted-list-item"
+  | "task-list-item" | "code-line" | "divider" | "image" | "link" | "heading-one" | "heading-two" | "heading-three" | "heading-four" | "heading-five" | "heading-six"
+  | undefined
 export default function Home() {
   const renderElement = useCallback((props: RenderElementProps) => <Element {...props} />, [])
   const renderLeaf = useCallback((props: RenderLeafProps) => <Leaf {...props} />, [])
@@ -60,15 +63,20 @@ export default function Home() {
     }
   }, [])
 
-  const initialValue = useMemo(
-    () =>
-      JSON.parse(localStorage.getItem('content') || "") || [
-        {
-          type: 'paragraph',
-          children: [{ text: 'A line of text in a paragraph.' }],
-        },
-      ],
-    []
+  let initialValue:Descendant[] = [ {
+    type: 'paragraph',
+    children: [{ text: '' }],
+  }]
+  
+
+  useEffect(
+    () => {
+      let history = JSON.parse(localStorage.getItem('content')??"[]")??[];
+
+      editor.children = history;
+      return ()=>{}
+    },
+    [editor]
   )
   const floatToolBar = useMemo(() => {
     return (
@@ -445,41 +453,7 @@ const insertImage = (editor: CustomEditor, url: string) => {
 }
 
 
-const isLinkActive = (editor: CustomEditor) => {
-  const link = Editor.nodes(editor, {
-    match: n =>
-      !Editor.isEditor(n) && SlateElement.isElement(n) && n.type === 'link',
-  })
-  return !!link
-}
 
-const unwrapLink = (editor: CustomEditor) => {
-  Transforms.unwrapNodes(editor, {
-    match: n =>
-      !Editor.isEditor(n) && SlateElement.isElement(n) && n.type === 'link',
-  })
-}
-
-export const wrapLink = (editor: CustomEditor, url: string) => {
-  if (isLinkActive(editor)) {
-    unwrapLink(editor)
-  }
-
-  const { selection } = editor
-  const isCollapsed = selection && Range.isCollapsed(selection)
-  const link: LinkElement = {
-    type: 'link',
-    url,
-    children: isCollapsed ? [{ text: url }] : [],
-  }
-
-  if (isCollapsed) {
-    Transforms.insertNodes(editor, link)
-  } else {
-    Transforms.wrapNodes(editor, link, { split: true })
-    Transforms.collapse(editor, { edge: 'end' })
-  }
-}
 const withInline = (editor: CustomEditor) => {
   const { deleteBackward, insertText, insertBreak, isVoid, isInline } = editor
 
@@ -562,7 +536,7 @@ const withShortcuts = (editor: CustomEditor) => {
       const start = Editor.start(editor, path)
       const range = { anchor, focus: start }
       const beforeText = Editor.string(editor, range) + text.slice(0, -1)
-      let type = SHORTCUTS[beforeText]
+      let type = SHORTCUTS.get(beforeText)
       if (!type && beforeText.match(/\d\./)) {
         type = "sorted-list-item"
       }

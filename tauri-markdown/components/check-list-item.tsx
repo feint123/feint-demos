@@ -12,7 +12,7 @@ import {
 } from 'slate'
 import { css } from '@emotion/css'
 
-export const CheckListItemElement = ({ attributes, children, element }) => {
+export const CheckListItemElement = ({ attributes, children, element }: { attributes: any, children: any, element: any }) => {
   const editor = useSlateStatic()
   const readOnly = useReadOnly()
   const { checked } = element

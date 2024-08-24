@@ -6,8 +6,7 @@ import { Button, Input, Popover, PopoverContent, PopoverTrigger, Tooltip } from 
 import { VscCheck } from "react-icons/vsc"
 import { GoBold, GoCode, GoItalic, GoLink } from "react-icons/go";
 import { AiOutlineUnderline } from "react-icons/ai"
-import { wrapLink } from "@/app/page"
-import { RiRobot2Line } from "react-icons/ri";
+import { isMarkActive, toggleMark, wrapLink } from "@/utils/slate-utils"
 
 
 export const HoveringToolbar = ({ showPanel, top, left, showLink, onLinkClick, onSubmitLink }:
@@ -73,22 +72,11 @@ export const HoveringToolbar = ({ showPanel, top, left, showLink, onLinkClick, o
 
 }
 
-export const toggleMark = (editor: Editor, format: string) => {
-    const isActive = isMarkActive(editor, format)
 
-    if (isActive) {
-        Editor.removeMark(editor, format)
-    } else {
-        Editor.addMark(editor, format, true)
-    }
-}
 interface Marks {
     [key: string]: boolean;
 }
-const isMarkActive = (editor: Editor, format: string) => {
-    const marks = Editor.marks(editor)
-    return marks ? marks[format] === true : false
-}
+
 
 
 

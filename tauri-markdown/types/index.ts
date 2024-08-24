@@ -50,6 +50,14 @@ export type LinkElement = {
 export type ListItemElement = { type: 'list-item'; children: Descendant[] }
 export type SortedListItemElement = { type: 'sorted-list-item'; children: Descendant[] }
 export type BlockQuoteItemElement = { type: 'block-quote-item'; children: Descendant[] }
+
+export type HeadingOneElement = { type: 'heading-one'; children: Descendant[] }
+export type HeadingTwoElement = { type: 'heading-two'; children: Descendant[] }
+export type HeadingThreeElement = { type: 'heading-three'; children: Descendant[] }
+export type HeadingFourElement = { type: 'heading-four'; children: Descendant[] }
+export type HeadingFiveElement = { type: 'heading-five'; children: Descendant[] }
+export type HeadingSixElement = { type: 'heading-six'; children: Descendant[] }
+
 export type CodeLineElement = {
   type: 'code-line'
   children: Descendant[]
@@ -91,6 +99,12 @@ export type CustomElement =
   | DividerElement
   | ImageElement
   | LinkElement
+  | HeadingOneElement
+  | HeadingTwoElement
+  | HeadingThreeElement
+  | HeadingFourElement
+  | HeadingFiveElement
+  | HeadingSixElement
  
 export type CustomEditor = BaseEditor &
   ReactEditor &
