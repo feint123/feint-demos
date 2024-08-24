@@ -71,8 +71,10 @@ export default function Home() {
 
   useEffect(
     () => {
-      let history = JSON.parse(localStorage.getItem('content')??"[]")??[];
-
+      let history = JSON.parse(localStorage.getItem('content')??JSON.stringify([{
+        type: 'paragraph',
+        children: [{ text: '' }],
+      }]));
       editor.children = history;
       return ()=>{}
     },
